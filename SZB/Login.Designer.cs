@@ -190,20 +190,22 @@
             // 
             // textBox1
             // 
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
-            this.textBox1.Location = new System.Drawing.Point(36, 12);
+            this.textBox1.Location = new System.Drawing.Point(36, 15);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(370, 27);
+            this.textBox1.Size = new System.Drawing.Size(370, 20);
             this.textBox1.TabIndex = 1;
             // 
             // textBox2
             // 
+            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox2.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
-            this.textBox2.Location = new System.Drawing.Point(36, 10);
+            this.textBox2.Location = new System.Drawing.Point(36, 15);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(370, 24);
+            this.textBox2.Size = new System.Drawing.Size(370, 17);
             this.textBox2.TabIndex = 1;
             this.textBox2.UseSystemPasswordChar = true;
             // 
