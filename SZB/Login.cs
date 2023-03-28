@@ -33,7 +33,9 @@ namespace SZB
 
             if (ds.Tables[0].Rows.Count != 0)
             {
-                MessageBox.Show("All is correct!");
+                this.Hide();
+                Dashboard dsa = new Dashboard();
+                dsa.Show();    
             }
             else
             {
