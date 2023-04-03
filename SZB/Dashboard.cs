@@ -16,5 +16,22 @@ namespace SZB
         {
             InitializeComponent();
         }
+
+        public static int restrict = 0;
+
+        private void dodawaćKsiążkiToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //prevent Form(AddBooks) from opening multiple times(uniemożliwić wielokrotne otwieranie AddBooks)
+            if (restrict == 0)
+            {
+                restrict++;
+                AddBooks abs = new AddBooks();
+                abs.Show();
+            }
+            else
+            {
+                MessageBox.Show("Formularz jest już otwarty!");
+            }
+;        }
     }
 }

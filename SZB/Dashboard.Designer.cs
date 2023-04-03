@@ -70,6 +70,7 @@
             this.dodawaćKsiążkiToolStripMenuItem.Name = "dodawaćKsiążkiToolStripMenuItem";
             this.dodawaćKsiążkiToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.dodawaćKsiążkiToolStripMenuItem.Text = "Dodać książku";
+            this.dodawaćKsiążkiToolStripMenuItem.Click += new System.EventHandler(this.dodawaćKsiążkiToolStripMenuItem_Click);
             // 
             // przeglądaćKsiążkiToolStripMenuItem
             // 
