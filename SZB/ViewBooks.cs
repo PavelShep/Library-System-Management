@@ -43,6 +43,7 @@ namespace SZB
         }
 
         int bid;
+        int rowid;
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
@@ -55,6 +56,8 @@ namespace SZB
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             DataSet ds = new DataSet();
             da.Fill(ds);
+
+            rowid = Convert.ToInt32(ds.Tables[0].Rows[0][0].ToString());
 
             textBox2.Text = ds.Tables[0].Rows[0][1].ToString();
             textBox3.Text = ds.Tables[0].Rows[0][2].ToString();
@@ -96,11 +99,32 @@ namespace SZB
             textBox1.Clear();
             panel2.Visible = false;
 
+            SqlConnection con = new SqlConnection(@"Data Source=librarymanagesystem.database.windows.net;Initial Catalog=SZB;User ID=adminXYZ;Password=GorzWlkp!;Connect Timeout=60;Encrypt=True;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+            SqlCommand cmd = new SqlCommand("SELECT * FROM Books", con);
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            DataSet ds = new DataSet();
+            da.Fill(ds);
+
+            dataGridView1.DataSource = ds.Tables[0];
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
+            if (MessageBox.Show("Dane will be updated, Confirm?", "Warning", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+            {
+                string bname = textBox2.Text;
+                string bauthor = textBox3.Text;
+                string publication = textBox4.Text;
+                int bquantity = Convert.ToInt32(textBox5.Text);
 
+                SqlConnection con = new SqlConnection(@"Data Source=librarymanagesystem.database.windows.net;Initial Catalog=SZB;User ID=adminXYZ;Password=GorzWlkp!;Connect Timeout=60;Encrypt=True;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+                SqlCommand cmd = new SqlCommand("UPDATE Books SET bName = '" + bname + "', bAuthor = '" + bauthor + "', bPublication = '" + publication + "', bQuantity = " + bquantity + " WHERE bid=" + rowid + "", con);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataSet ds = new DataSet();
+                da.Fill(ds);
+                
+                MessageBox.Show("Please Refresh to see changes", "Success", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
     }
 }
