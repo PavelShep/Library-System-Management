@@ -55,7 +55,14 @@ namespace SZB
 
         private void AddBooks_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Dashboard.restrict = 0;
+            if (MessageBox.Show("Are you sure you want to exit?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.No)
+            {
+                e.Cancel = true;
+            }
+            else
+            {
+                Dashboard.restrict = 0;
+            }
         }
     }
 }
