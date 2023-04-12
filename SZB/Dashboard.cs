@@ -33,5 +33,25 @@ namespace SZB
                 MessageBox.Show("Formularz jest już otwarty!");
             }
 ;        }
+
+        private void przeglądaćKsiążkiToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //prevent Form(ViewBooks) from opening multiple times(uniemożliwić wielokrotne otwieranie AddBooks)
+            if (restrict == 0)
+            {
+                restrict++;
+                ViewBooks vb = new ViewBooks();
+                vb.Show();
+            }
+            else
+            {
+                MessageBox.Show("Formularz jest już otwarty!");
+            }
+        }
+
+        private void Dashboard_FormClosed(object sender, FormClosedEventArgs e)
+        { 
+            Application.Exit();
+        }
     }
 }

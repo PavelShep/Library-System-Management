@@ -20,10 +20,10 @@ namespace SZB
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Czy jesteś pewny że chcesz wyjść?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes) {
-                this.Close();
-                Dashboard.restrict = 0;
-            }  
+            textBox1.Clear();
+            textBox2.Clear();
+            textBox3.Clear();
+            textBox4.Clear();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -53,5 +53,9 @@ namespace SZB
             }  
         }
 
+        private void AddBooks_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Dashboard.restrict = 0;
+        }
     }
 }
