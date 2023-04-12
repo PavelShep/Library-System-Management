@@ -46,23 +46,27 @@ namespace SZB
         int rowid;
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
+            if ((dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null) && (e.ColumnIndex == 0))
             {
                 bid = int.Parse(dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString());
+                panel2.Visible = true;
+                SqlConnection con = new SqlConnection(@"Data Source=librarymanagesystem.database.windows.net;Initial Catalog=SZB;User ID=adminXYZ;Password=GorzWlkp!;Connect Timeout=60;Encrypt=True;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+                SqlCommand cmd = new SqlCommand("SELECT * FROM Books WHERE bid=" + bid + "", con);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataSet ds = new DataSet();
+                da.Fill(ds);
+
+                rowid = Convert.ToInt32(ds.Tables[0].Rows[0][0].ToString());
+
+                textBox2.Text = ds.Tables[0].Rows[0][1].ToString();
+                textBox3.Text = ds.Tables[0].Rows[0][2].ToString();
+                textBox4.Text = ds.Tables[0].Rows[0][3].ToString();
+                textBox5.Text = ds.Tables[0].Rows[0][4].ToString();
             }
-            panel2.Visible = true;
-            SqlConnection con = new SqlConnection(@"Data Source=librarymanagesystem.database.windows.net;Initial Catalog=SZB;User ID=adminXYZ;Password=GorzWlkp!;Connect Timeout=60;Encrypt=True;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
-            SqlCommand cmd = new SqlCommand("SELECT * FROM Books WHERE bid=" + bid + "", con);
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
-            DataSet ds = new DataSet();
-            da.Fill(ds);
-
-            rowid = Convert.ToInt32(ds.Tables[0].Rows[0][0].ToString());
-
-            textBox2.Text = ds.Tables[0].Rows[0][1].ToString();
-            textBox3.Text = ds.Tables[0].Rows[0][2].ToString();
-            textBox4.Text = ds.Tables[0].Rows[0][3].ToString();
-            textBox5.Text = ds.Tables[0].Rows[0][4].ToString();
+            else
+            {
+                MessageBox.Show("Click on the items in the bid column to change or delete the data", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void button4_Click(object sender, EventArgs e)
