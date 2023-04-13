@@ -56,12 +56,27 @@ namespace SZB
 
         private void dodaćStudentaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //prevent Form(ViewBooks) from opening multiple times(uniemożliwić wielokrotne otwieranie AddBooks)
+            //prevent Form(AddStudents) from opening multiple times(uniemożliwić wielokrotne otwieranie AddBooks)
             if (restrict == 0)
             {
                 restrict++;
                 AddStudents ass = new AddStudents();
                 ass.Show();
+            }
+            else
+            {
+                MessageBox.Show("Formularz jest już otwarty!");
+            }
+        }
+
+        private void przeglądaćStudentówToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //prevent Form(AddStudents) from opening multiple times(uniemożliwić wielokrotne otwieranie AddBooks)
+            if (restrict == 0)
+            {
+                restrict++;
+                ViewStudents vs = new ViewStudents();
+                vs.Show();
             }
             else
             {

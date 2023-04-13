@@ -102,6 +102,7 @@
             this.przeglądaćStudentówToolStripMenuItem.Name = "przeglądaćStudentówToolStripMenuItem";
             this.przeglądaćStudentówToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
             this.przeglądaćStudentówToolStripMenuItem.Text = "Przeglądać studentów";
+            this.przeglądaćStudentówToolStripMenuItem.Click += new System.EventHandler(this.przeglądaćStudentówToolStripMenuItem_Click);
             // 
             // issueBooksToolStripMenuItem
             // 
