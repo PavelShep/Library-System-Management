@@ -70,14 +70,14 @@
             // dodawaćKsiążkiToolStripMenuItem
             // 
             this.dodawaćKsiążkiToolStripMenuItem.Name = "dodawaćKsiążkiToolStripMenuItem";
-            this.dodawaćKsiążkiToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.dodawaćKsiążkiToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
             this.dodawaćKsiążkiToolStripMenuItem.Text = "Dodać książku";
             this.dodawaćKsiążkiToolStripMenuItem.Click += new System.EventHandler(this.dodawaćKsiążkiToolStripMenuItem_Click);
             // 
             // przeglądaćKsiążkiToolStripMenuItem
             // 
             this.przeglądaćKsiążkiToolStripMenuItem.Name = "przeglądaćKsiążkiToolStripMenuItem";
-            this.przeglądaćKsiążkiToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.przeglądaćKsiążkiToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
             this.przeglądaćKsiążkiToolStripMenuItem.Text = "Przeglądać książki";
             this.przeglądaćKsiążkiToolStripMenuItem.Click += new System.EventHandler(this.przeglądaćKsiążkiToolStripMenuItem_Click);
             // 
@@ -95,6 +95,7 @@
             this.dodaćStudentaToolStripMenuItem.Name = "dodaćStudentaToolStripMenuItem";
             this.dodaćStudentaToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
             this.dodaćStudentaToolStripMenuItem.Text = "Dodać studenta";
+            this.dodaćStudentaToolStripMenuItem.Click += new System.EventHandler(this.dodaćStudentaToolStripMenuItem_Click);
             // 
             // przeglądaćStudentówToolStripMenuItem
             // 
@@ -127,7 +128,7 @@
             this.ClientSize = new System.Drawing.Size(843, 483);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Dashboard";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Dashboard";
