@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -11,8 +12,11 @@ using System.Windows.Forms;
 
 namespace SZB
 {
+    
     public partial class Login : Form
     {
+        public int LoginCounter = 0;
+        public int PasswordCounter = 0;
         public Login()
         {
             InitializeComponent();
@@ -41,6 +45,31 @@ namespace SZB
             {
                 MessageBox.Show("Nieprawidłowa nazwa użytkownika lub nieprawidłowe hasło", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void textBox1_MouseClick(object sender, MouseEventArgs e)
+        {
+            if(textBox1.Text == "Login" && LoginCounter == 0) 
+            {
+                textBox1.Clear();
+                LoginCounter++;
+            }
+        }
+
+        private void textBox2_MouseClick(object sender, MouseEventArgs e)
+        {
+         
+            if (textBox2.Text == "Password" && PasswordCounter == 0)
+            {   
+                textBox2.Clear();
+                
+                PasswordCounter++;
+            }
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+            textBox2.PasswordChar = '*';
         }
     }
 }
