@@ -83,5 +83,20 @@ namespace SZB
                 MessageBox.Show("Formularz jest już otwarty!");
             }
         }
+
+        private void issueBooksToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //prevent Form(AddStudents) from opening multiple times(uniemożliwić wielokrotne otwieranie AddBooks)
+            if (restrict == 0)
+            {
+                restrict++;
+                IssueBooks ib = new IssueBooks();
+                ib.Show();
+            }
+            else
+            {
+                MessageBox.Show("Formularz jest już otwarty!");
+            }
+        }
     }
 }
