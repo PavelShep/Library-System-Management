@@ -1,0 +1,13 @@
+D:\install\Library-System-Management-master\Library-System-Management-master\SZB\bin\Debug\SZB.exe.config
+D:\install\Library-System-Management-master\Library-System-Management-master\SZB\bin\Debug\SZB.exe
+D:\install\Library-System-Management-master\Library-System-Management-master\SZB\bin\Debug\SZB.pdb
+D:\install\Library-System-Management-master\Library-System-Management-master\SZB\obj\Debug\SZB.csproj.AssemblyReference.cache
+D:\install\Library-System-Management-master\Library-System-Management-master\SZB\obj\Debug\SZB.csproj.SuggestedBindingRedirects.cache
+D:\install\Library-System-Management-master\Library-System-Management-master\SZB\obj\Debug\SZB.Login.resources
+D:\install\Library-System-Management-master\Library-System-Management-master\SZB\obj\Debug\SZB.Properties.Resources.resources
+D:\install\Library-System-Management-master\Library-System-Management-master\SZB\obj\Debug\SZB.csproj.GenerateResource.cache
+D:\install\Library-System-Management-master\Library-System-Management-master\SZB\obj\Debug\SZB.csproj.CoreCompileInputs.cache
+D:\install\Library-System-Management-master\Library-System-Management-master\SZB\obj\Debug\SZB.exe
+D:\install\Library-System-Management-master\Library-System-Management-master\SZB\obj\Debug\SZB.pdb
+D:\install\Library-System-Management-master\Library-System-Management-master\SZB\obj\Debug\SZB.Dashboard.resources
+D:\install\Library-System-Management-master\Library-System-Management-master\SZB\obj\Debug\SZB.Books.resources
