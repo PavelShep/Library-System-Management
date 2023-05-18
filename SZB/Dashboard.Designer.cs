@@ -116,6 +116,7 @@
             this.returnBooksToolStripMenuItem.Name = "returnBooksToolStripMenuItem";
             this.returnBooksToolStripMenuItem.Size = new System.Drawing.Size(89, 20);
             this.returnBooksToolStripMenuItem.Text = "Return Books";
+            this.returnBooksToolStripMenuItem.Click += new System.EventHandler(this.returnBooksToolStripMenuItem_Click);
             // 
             // completeBookDetailsToolStripMenuItem
             // 

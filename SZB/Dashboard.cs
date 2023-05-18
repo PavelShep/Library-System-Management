@@ -98,5 +98,19 @@ namespace SZB
                 MessageBox.Show("Formularz jest już otwarty!");
             }
         }
+
+        private void returnBooksToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (restrict == 0)
+            {
+                restrict++;
+                ReturnBook rb = new ReturnBook();
+                rb.Show();
+            }
+            else
+            {
+                MessageBox.Show("Formularz jest już otwarty!");
+            }
+        }
     }
 }
