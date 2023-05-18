@@ -112,5 +112,19 @@ namespace SZB
                 MessageBox.Show("Formularz jest już otwarty!");
             }
         }
+
+        private void completeBookDetailsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (restrict == 0)
+            {
+                restrict++;
+                CompleteBookDetail cb = new CompleteBookDetail();
+                cb.Show();
+            }
+            else
+            {
+                MessageBox.Show("Formularz jest już otwarty!");
+            }
+        }
     }
 }

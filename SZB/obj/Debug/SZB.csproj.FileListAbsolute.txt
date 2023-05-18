@@ -32,3 +32,4 @@ C:\Users\Acer Aspire 3\Desktop\SZB(old)\SZB\obj\Debug\SZB.csproj.CoreCompileInpu
 C:\Users\Acer Aspire 3\Desktop\SZB(old)\SZB\obj\Debug\SZB.exe
 C:\Users\Acer Aspire 3\Desktop\SZB(old)\SZB\obj\Debug\SZB.pdb
 C:\Users\Acer Aspire 3\Desktop\SZB(old)\SZB\obj\Debug\SZB.ReturnBook.resources
+C:\Users\Acer Aspire 3\Desktop\SZB(old)\SZB\obj\Debug\SZB.CompleteBookDetail.resources
