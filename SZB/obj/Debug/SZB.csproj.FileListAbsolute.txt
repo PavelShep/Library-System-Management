@@ -14,3 +14,20 @@ C:\Users\Acer Aspire 3\Desktop\New folder\SZB\obj\Debug\SZB.csproj.GenerateResou
 C:\Users\Acer Aspire 3\Desktop\New folder\SZB\obj\Debug\SZB.csproj.CoreCompileInputs.cache
 C:\Users\Acer Aspire 3\Desktop\New folder\SZB\obj\Debug\SZB.exe
 C:\Users\Acer Aspire 3\Desktop\New folder\SZB\obj\Debug\SZB.pdb
+C:\Users\Acer Aspire 3\Desktop\SZB(old)\SZB\bin\Debug\SZB.exe.config
+C:\Users\Acer Aspire 3\Desktop\SZB(old)\SZB\bin\Debug\SZB.exe
+C:\Users\Acer Aspire 3\Desktop\SZB(old)\SZB\bin\Debug\SZB.pdb
+C:\Users\Acer Aspire 3\Desktop\SZB(old)\SZB\obj\Debug\SZB.csproj.AssemblyReference.cache
+C:\Users\Acer Aspire 3\Desktop\SZB(old)\SZB\obj\Debug\SZB.csproj.SuggestedBindingRedirects.cache
+C:\Users\Acer Aspire 3\Desktop\SZB(old)\SZB\obj\Debug\SZB.AddBooks.resources
+C:\Users\Acer Aspire 3\Desktop\SZB(old)\SZB\obj\Debug\SZB.AddStudents.resources
+C:\Users\Acer Aspire 3\Desktop\SZB(old)\SZB\obj\Debug\SZB.Dashboard.resources
+C:\Users\Acer Aspire 3\Desktop\SZB(old)\SZB\obj\Debug\SZB.IssueBooks.resources
+C:\Users\Acer Aspire 3\Desktop\SZB(old)\SZB\obj\Debug\SZB.Login.resources
+C:\Users\Acer Aspire 3\Desktop\SZB(old)\SZB\obj\Debug\SZB.Properties.Resources.resources
+C:\Users\Acer Aspire 3\Desktop\SZB(old)\SZB\obj\Debug\SZB.ViewBooks.resources
+C:\Users\Acer Aspire 3\Desktop\SZB(old)\SZB\obj\Debug\SZB.ViewStudents.resources
+C:\Users\Acer Aspire 3\Desktop\SZB(old)\SZB\obj\Debug\SZB.csproj.GenerateResource.cache
+C:\Users\Acer Aspire 3\Desktop\SZB(old)\SZB\obj\Debug\SZB.csproj.CoreCompileInputs.cache
+C:\Users\Acer Aspire 3\Desktop\SZB(old)\SZB\obj\Debug\SZB.exe
+C:\Users\Acer Aspire 3\Desktop\SZB(old)\SZB\obj\Debug\SZB.pdb
