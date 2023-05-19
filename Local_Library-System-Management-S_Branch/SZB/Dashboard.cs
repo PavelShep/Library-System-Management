@@ -90,7 +90,7 @@ namespace SZB
 
         private void button2_Click(object sender, EventArgs e)
         {
-            int accountId = 1; // Замініть на ваш ID аккаунту
+            // Замініть на ваш ID аккаунту
             OpenMainForm(new Books(accountId));
             
 
@@ -99,7 +99,7 @@ namespace SZB
         }
         private void button3_Click(object sender, EventArgs e)
         {
-            OpenMainForm(new AddBooks());
+            OpenMainForm(new AddBooks(accountId));
             HideMenu();
         }
 

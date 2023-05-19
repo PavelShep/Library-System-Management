@@ -14,9 +14,11 @@ namespace SZB
 {
     public partial class AddBooks : Form
     {
-        public AddBooks()
+        private int accountId;
+        public AddBooks(int accountId)
         {
             InitializeComponent();
+            this.accountId = accountId;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -39,10 +41,11 @@ namespace SZB
                 string bauthor = textBox2.Text;
                 string bpublication = textBox3.Text;
                 int price = Convert.ToInt32(textBox4.Text);
+                
 
                 SqlConnection con = new SqlConnection(@"Data Source=librarymanagesystem.database.windows.net;Initial Catalog=SZB;User ID=adminXYZ;Password=GorzWlkp!;Connect Timeout=60;Encrypt=True;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
                 con.Open();
-                SqlCommand cmd = new SqlCommand("INSERT INTO Books (bName, bAuthor, bPublication, bQuantity) VALUES ('" + bname + "','" + bauthor + "', '" + bpublication + "','" + price + "')", con);
+                SqlCommand cmd = new SqlCommand("INSERT INTO Books (bName, bAuthor, bPublication, bQuantity, accountId) VALUES ('" + bname + "','" + bauthor + "', '" + bpublication + "','" + price + "','" + accountId + "')", con);
                 cmd.ExecuteNonQuery();
                 con.Close();
 
