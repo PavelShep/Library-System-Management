@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace SZB
 {
-    public partial class Books : Form
+    public partial class Books : Form 
     {
         private int accountId; // Змінна для збереження ID аккаунту
 
@@ -31,7 +31,8 @@ namespace SZB
 
         private void LoadBooks()
         {
-            SqlConnection con = new SqlConnection(@"Data Source=librarymanagesystem.database.windows.net;Initial Catalog=SZB;User ID=adminXYZ;Password=GorzWlkp!;Connect Timeout=60;Encrypt=True;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+           
+            SqlConnection con = new SqlConnection(@"Data Source=librarymanagesystem.database.windows.net;Initial Catalog=SZB;User ID=adminXYZ;Password=GorzWlkp!;Connect Timeout=10;Encrypt=True;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
             SqlCommand cmd = new SqlCommand("SELECT * FROM Books WHERE accountId = @accountId", con);
             cmd.Parameters.AddWithValue("@accountId", accountId);
             SqlDataAdapter da = new SqlDataAdapter(cmd);
@@ -147,6 +148,12 @@ namespace SZB
         private void Books_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void First_timer_Try_Tick(object sender, EventArgs e)
+        {
+            network_connection connection = new network_connection();
+            connection.nConnection();
         }
     }
 }

@@ -24,22 +24,22 @@ namespace SZB
             this.AcceptButton = button2;
         }
 
-        public int nConnection()
-        {
-            bool networkUp = System.Net.NetworkInformation.NetworkInterface.GetIsNetworkAvailable();
-            if (networkUp == false)
-            {
-                MessageBox.Show("No internet connection , try again");
-                Application.Restart();
-                this.Close();
-                return Convert.ToInt32(networkUp);
-            }
-            else
-            {
-                networkUp= true;
-                return Convert.ToInt32(networkUp);
-            }
-        }
+        //public int nConnection()
+        //{
+        //    bool networkUp = System.Net.NetworkInformation.NetworkInterface.GetIsNetworkAvailable();
+        //    if (networkUp == false)
+        //    {
+        //        MessageBox.Show("No internet connection , try again");
+        //        Application.Restart();
+        //        this.Close();
+        //        return Convert.ToInt32(networkUp);
+        //    }
+        //    else
+        //    {
+        //        networkUp= true;
+        //        return Convert.ToInt32(networkUp);
+        //    }
+        //}
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -48,10 +48,11 @@ namespace SZB
 
         private void button2_Click(object sender, EventArgs e)
         {
+            network_connection network_Connection= new network_connection();
             
-            if (nConnection() == 1)
+            if (network_Connection.nConnection() == 1)
             {
-                nConnection();
+                
                 SqlConnection con = new SqlConnection(@"Data Source=librarymanagesystem.database.windows.net;Initial Catalog=SZB;User ID=adminXYZ;Password=GorzWlkp!;Connect Timeout=10;Encrypt=True;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
                 SqlCommand cmd = new SqlCommand("SELECT * FROM LoginTable WHERE login = '" + textBox1.Text + "' AND password = '" + textBox2.Text + "' ", con);
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
