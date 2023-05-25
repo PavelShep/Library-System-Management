@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -20,6 +21,24 @@ namespace SZB
         public Login()
         {
             InitializeComponent();
+            this.AcceptButton = button2;
+        }
+
+        public int nConnection()
+        {
+            bool networkUp = System.Net.NetworkInformation.NetworkInterface.GetIsNetworkAvailable();
+            if (networkUp == false)
+            {
+                MessageBox.Show("No internet connection , try again");
+                Application.Restart();
+                this.Close();
+                return Convert.ToInt32(networkUp);
+            }
+            else
+            {
+                networkUp= true;
+                return Convert.ToInt32(networkUp);
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -29,21 +48,31 @@ namespace SZB
 
         private void button2_Click(object sender, EventArgs e)
         {
-            SqlConnection con = new SqlConnection(@"Data Source=librarymanagesystem.database.windows.net;Initial Catalog=SZB;User ID=adminXYZ;Password=GorzWlkp!;Connect Timeout=60;Encrypt=True;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
-            SqlCommand cmd = new SqlCommand("SELECT * FROM LoginTable WHERE login = '" + textBox1.Text + "' AND password = '" + textBox2.Text + "' ", con);
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
-            DataSet ds = new DataSet();
-            da.Fill(ds);
+            
+            if (nConnection() == 1)
+            {
+                nConnection();
+                SqlConnection con = new SqlConnection(@"Data Source=librarymanagesystem.database.windows.net;Initial Catalog=SZB;User ID=adminXYZ;Password=GorzWlkp!;Connect Timeout=10;Encrypt=True;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+                SqlCommand cmd = new SqlCommand("SELECT * FROM LoginTable WHERE login = '" + textBox1.Text + "' AND password = '" + textBox2.Text + "' ", con);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataSet ds = new DataSet();
+                da.Fill(ds);
+                //Error
 
-            if (ds.Tables[0].Rows.Count != 0)
-            {
-                this.Hide();
-                Dashboard dsa = new Dashboard();
-                dsa.Show();    
-            }
-            else
-            {
-                MessageBox.Show("Nieprawidłowa nazwa użytkownika lub nieprawidłowe hasło", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+
+                if (ds.Tables[0].Rows.Count != 0)
+                {
+
+                    this.Hide();
+                    int accountId = Convert.ToInt32(ds.Tables[0].Rows[0]["Id"]);
+                    Dashboard dsa = new Dashboard(accountId);
+                    dsa.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Nieprawidłowa nazwa użytkownika lub nieprawidłowe hasło", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
@@ -70,6 +99,17 @@ namespace SZB
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
             textBox2.PasswordChar = '*';
+        }
+
+        private void LoginForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (!string.IsNullOrWhiteSpace(textBox1.Text) && !string.IsNullOrWhiteSpace(textBox2.Text))
+                {
+                    button2.PerformClick();
+                }
+            }
         }
     }
 }
