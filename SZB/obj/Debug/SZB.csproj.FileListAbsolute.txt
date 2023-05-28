@@ -37,3 +37,17 @@ D:\Trying\c#\Local_Library-System-Management-S_Branch\SZB\obj\Debug\SZB.csproj.C
 D:\Trying\c#\Local_Library-System-Management-S_Branch\SZB\obj\Debug\SZB.exe
 D:\Trying\c#\Local_Library-System-Management-S_Branch\SZB\obj\Debug\SZB.pdb
 D:\Trying\c#\Local_Library-System-Management-S_Branch\SZB\obj\Debug\SZB.AddBooks.resources
+E:\visualrepbib\SZB\bin\Debug\SZB.exe.config
+E:\visualrepbib\SZB\bin\Debug\SZB.exe
+E:\visualrepbib\SZB\bin\Debug\SZB.pdb
+E:\visualrepbib\SZB\obj\Debug\SZB.csproj.AssemblyReference.cache
+E:\visualrepbib\SZB\obj\Debug\SZB.csproj.SuggestedBindingRedirects.cache
+E:\visualrepbib\SZB\obj\Debug\SZB.AddBooks.resources
+E:\visualrepbib\SZB\obj\Debug\SZB.Books.resources
+E:\visualrepbib\SZB\obj\Debug\SZB.Dashboard.resources
+E:\visualrepbib\SZB\obj\Debug\SZB.Login.resources
+E:\visualrepbib\SZB\obj\Debug\SZB.Properties.Resources.resources
+E:\visualrepbib\SZB\obj\Debug\SZB.csproj.GenerateResource.cache
+E:\visualrepbib\SZB\obj\Debug\SZB.csproj.CoreCompileInputs.cache
+E:\visualrepbib\SZB\obj\Debug\SZB.exe
+E:\visualrepbib\SZB\obj\Debug\SZB.pdb
