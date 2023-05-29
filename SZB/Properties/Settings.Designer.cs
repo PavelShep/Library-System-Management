@@ -33,5 +33,16 @@ namespace SZB.Properties {
                 return ((string)(this["LibraryDataBaseConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=librarymanagesystem.database.windows.net;Initial Catalog=SZB;Persist " +
+            "Security Info=True;User ID=adminXYZ;Password=GorzWlkp!")]
+        public string SZBConnectionString {
+            get {
+                return ((string)(this["SZBConnectionString"]));
+            }
+        }
     }
 }

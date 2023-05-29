@@ -11,6 +11,7 @@ using System.Windows.Forms;
 namespace SZB
 {
 
+
     public partial class Dashboard : Form
     {
         int clcount = 0;
@@ -22,6 +23,82 @@ namespace SZB
             CustomizeDesing();
             this.accountId = accountId;
         }
+
+//        private void dodawaćKsiążkiToolStripMenuItem_Click(object sender, EventArgs e)
+//        {
+//            //prevent Form(AddBooks) from opening multiple times(uniemożliwić wielokrotne otwieranie AddBooks)
+//            if (restrict == 0)
+//            {
+//                restrict++;
+//                AddBooks abs = new AddBooks();
+//                abs.Show();
+//            }
+//            else
+//            {
+//                MessageBox.Show("Formularz jest już otwarty!");
+//            }
+//;
+//        }
+
+        //private void przeglądaćKsiążkiToolStripMenuItem_Click(object sender, EventArgs e)
+        //{
+        //    //prevent Form(ViewBooks) from opening multiple times(uniemożliwić wielokrotne otwieranie AddBooks)
+        //    if (restrict == 0)
+        //    {
+        //        restrict++;
+        //        ViewBooks vb = new ViewBooks();
+        //        vb.Show();
+        //    }
+        //    else
+        //    {
+        //        MessageBox.Show("Formularz jest już otwarty!");
+        //    }
+        //}
+
+        //private void dodaćStudentaToolStripMenuItem_Click(object sender, EventArgs e)
+        //{
+        //    prevent Form(AddStudents) from opening multiple times(uniemożliwić wielokrotne otwieranie AddBooks)
+        //    if (restrict == 0)
+        //    {
+        //        restrict++;
+        //        AddStudents ass = new AddStudents();
+        //        ass.Show();
+        //    }
+        //    else
+        //    {
+        //        MessageBox.Show("Formularz jest już otwarty!");
+        //    }
+        //}
+
+        //private void przeglądaćStudentówToolStripMenuItem_Click(object sender, EventArgs e)
+        //{
+        //    prevent Form(AddStudents) from opening multiple times(uniemożliwić wielokrotne otwieranie AddBooks)
+        //    if (restrict == 0)
+        //    {
+        //        restrict++;
+        //        ViewStudents vs = new ViewStudents();
+        //        vs.Show();
+        //    }
+        //    else
+        //    {
+        //        MessageBox.Show("Formularz jest już otwarty!");
+        //    }
+        //}
+
+        //private void issueBooksToolStripMenuItem_Click(object sender, EventArgs e)
+        //{
+        //    prevent Form(AddStudents) from opening multiple times(uniemożliwić wielokrotne otwieranie AddBooks)
+        //    if (restrict == 0)
+        //    {
+        //        restrict++;
+        //        IssueBooks ib = new IssueBooks();
+        //        ib.Show();
+        //    }
+        //    else
+        //    {
+        //        MessageBox.Show("Formularz jest już otwarty!");
+        //    }
+        //}
 
         private void CustomizeDesing()
         {
@@ -98,7 +175,7 @@ namespace SZB
         }
         private void button3_Click(object sender, EventArgs e)
         {
-            OpenMainForm(new AddBooks(accountId));
+            
             HideMenu();
         }
 
