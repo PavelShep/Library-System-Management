@@ -46,6 +46,20 @@ namespace SZB
         {
             textBox1.Clear();
             panel2.Visible = false;
+
+
+          
+
+
+            SqlConnection con = new SqlConnection(@"Data Source=librarymanagesystem.database.windows.net;Initial Catalog=SZB;User ID=adminXYZ;Password=GorzWlkp!;Connect Timeout=60;Encrypt=True;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+            SqlCommand cmd = new SqlCommand("SELECT bName, bAuthor, bPublication, bQuantity FROM Books", con);
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            DataSet ds = new DataSet();
+            da.Fill(ds);
+
+            dataGridView1.DataSource = ds.Tables[0];
+
+
             LoadBooks();
         }
 
@@ -130,23 +144,12 @@ namespace SZB
         //    }
         //}
 
-        private void pictureBox1_Click_1(object sender, EventArgs e)
-        {
-            textBox1.Clear();
-            panel2.Visible = false;
 
-           
-            SqlConnection con = new SqlConnection(@"Data Source=librarymanagesystem.database.windows.net;Initial Catalog=SZB;User ID=adminXYZ;Password=GorzWlkp!;Connect Timeout=60;Encrypt=True;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
-            SqlCommand cmd = new SqlCommand("SELECT * FROM Books", con);
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
-            DataSet ds = new DataSet();
-            da.Fill(ds);
-
-            dataGridView1.DataSource = ds.Tables[0];
-        }
 
         private void Books_Load(object sender, EventArgs e)
         {
+            // TODO: Ten wiersz kodu wczytuje dane do tabeli 'sZBDataSet.Books' . Możesz go przenieść lub usunąć.
+            this.booksTableAdapter.Fill(this.sZBDataSet.Books);
 
         }
 

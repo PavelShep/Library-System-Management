@@ -51,3 +51,15 @@ E:\visualrepbib\SZB\obj\Debug\SZB.csproj.GenerateResource.cache
 E:\visualrepbib\SZB\obj\Debug\SZB.csproj.CoreCompileInputs.cache
 E:\visualrepbib\SZB\obj\Debug\SZB.exe
 E:\visualrepbib\SZB\obj\Debug\SZB.pdb
+C:\Users\Student\Desktop\Library-System-Management-version-3.0\SZB\bin\Debug\SZB.exe.config
+C:\Users\Student\Desktop\Library-System-Management-version-3.0\SZB\bin\Debug\SZB.exe
+C:\Users\Student\Desktop\Library-System-Management-version-3.0\SZB\bin\Debug\SZB.pdb
+C:\Users\Student\Desktop\Library-System-Management-version-3.0\SZB\obj\Debug\SZB.csprojAssemblyReference.cache
+C:\Users\Student\Desktop\Library-System-Management-version-3.0\SZB\obj\Debug\SZB.AddBooks.resources
+C:\Users\Student\Desktop\Library-System-Management-version-3.0\SZB\obj\Debug\SZB.Books.resources
+C:\Users\Student\Desktop\Library-System-Management-version-3.0\SZB\obj\Debug\SZB.Dashboard.resources
+C:\Users\Student\Desktop\Library-System-Management-version-3.0\SZB\obj\Debug\SZB.Login.resources
+C:\Users\Student\Desktop\Library-System-Management-version-3.0\SZB\obj\Debug\SZB.Properties.Resources.resources
+C:\Users\Student\Desktop\Library-System-Management-version-3.0\SZB\obj\Debug\SZB.csproj.GenerateResource.cache
+C:\Users\Student\Desktop\Library-System-Management-version-3.0\SZB\obj\Debug\SZB.exe
+C:\Users\Student\Desktop\Library-System-Management-version-3.0\SZB\obj\Debug\SZB.pdb
