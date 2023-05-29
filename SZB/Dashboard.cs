@@ -11,7 +11,6 @@ using System.Windows.Forms;
 namespace SZB
 {
 
-
     public partial class Dashboard : Form
     {
         int clcount = 0;
