@@ -18,7 +18,7 @@ namespace SZB
     {
         private int accountId; // Змінна для збереження ID аккаунту
 
-
+        //Maksim LOX
         public Books(int accountId)
         {
             InitializeComponent();
