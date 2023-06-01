@@ -12,19 +12,23 @@ namespace SZB
 {
     public partial class Dashboard : Form
     {
-        public Dashboard()
+        int clcount = 0;
+        private int accountId;
+
+        public Dashboard(int accountId)
         {
             InitializeComponent();
             CustomizeDesing();
+            this.accountId = accountId;
         }
 
-        private void CustomizeDesing() 
+        private void CustomizeDesing()
         {
-            panelSubMenuBooks.Visible= false;
-            panelSubMenuStudents.Visible= false;
+            panelSubMenuBooks.Visible = false;
+            panelSubMenuStudents.Visible = false;
         }
 
-        private void HideMenu() 
+        private void HideMenu()
         {
             if (panelSubMenuBooks.Visible = false == true)
             {
@@ -33,29 +37,29 @@ namespace SZB
             if (panelSubMenuStudents.Visible == true)
             {
                 panelSubMenuStudents.Visible = false;
-            }       
+            }
         }
 
-        private void ShowMenu(Panel subMenu) 
+        private void ShowMenu(Panel subMenu)
         {
-            if (subMenu.Visible == false) 
+            if (subMenu.Visible == false)
             {
                 HideMenu();
                 subMenu.Visible = true;
             }
-            else  subMenu.Visible = false;  
-            
+            else subMenu.Visible = false;
+
         }
 
         private Form activeForm = null;
-        private void OpenMainForm(Form MainChildForm) 
+        private void OpenMainForm(Form MainChildForm)
         {
-            if(activeForm!= null) 
+            if (activeForm != null)
             {
                 activeForm.Close();
             }
             activeForm = MainChildForm;
-            MainChildForm.TopLevel= false;
+            MainChildForm.TopLevel = false;
             MainChildForm.FormBorderStyle = FormBorderStyle.None;
             MainChildForm.Dock = DockStyle.Fill;
             panelMain.Controls.Add(MainChildForm);
@@ -65,12 +69,8 @@ namespace SZB
 
         }
 
-       
 
-        private void panelMenu_Paint(object sender, PaintEventArgs e)
-        {
 
-        }
 
         private void buttonBooks_Click(object sender, EventArgs e)
         {
@@ -85,16 +85,19 @@ namespace SZB
 
         private void button2_Click(object sender, EventArgs e)
         {
-            OpenMainForm(new Books());
+            // Замініть на ваш ID аккаунту
+            OpenMainForm(new Books(accountId));
             HideMenu();
         }
         private void button3_Click(object sender, EventArgs e)
         {
+            OpenMainForm(new IssueBooks(accountId));
             HideMenu();
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
+            OpenMainForm(new Students(accountId));
             HideMenu();
         }
 
@@ -103,15 +106,37 @@ namespace SZB
             HideMenu();
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Login lgp = new Login();
+            lgp.Show();
+        }
 
-        private void button1_Click_3(object sender, EventArgs e)
+        private void Dashboard_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
         }
 
-        private void Dashboard_FormClosed(object sender, FormClosedEventArgs e)
+        int time_counter = 0;
+        private void First_timer_Try_Tick(object sender, EventArgs e)
         {
-            Application.Exit();
+            if (time_counter == 0)
+            { 
+            network_connection connection = new network_connection();
+            connection.nConnection();
+            time_counter++;
+            if(connection.nConnection() == 1) 
+                {
+                    time_counter= 0;
+                }
+            }
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            OpenMainForm(new EditInfoBooks(accountId));
+            HideMenu();
         }
     }
 }

@@ -9,98 +9,98 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+
 
 namespace SZB
 {
-    public partial class Books : Form
+    public partial class Books : Form 
     {
-        public Books()
+        private int accountId; // Змінна для збереження ID аккаунту
+
+
+        public Books(int accountId)
         {
             InitializeComponent();
+            this.accountId = accountId;
+            LoadBooks();
         }
 
+        int bid;
+        int rowid;
+        //private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        //{
+        //    if ((e.ColumnIndex == 0) && (dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null))
+        //    {
+        //        bid = int.Parse(dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString());
+
+        //        SqlConnection con = new SqlConnection(@"Data Source=librarymanagesystem.database.windows.net;Initial Catalog=SZB;User ID=adminXYZ;Password=GorzWlkp!;Connect Timeout=60;Encrypt=True;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+        //        SqlCommand cmd = new SqlCommand("SELECT * FROM Books WHERE bid=" + bid + " and accountId = " + accountId + "", con);
+        //        SqlDataAdapter da = new SqlDataAdapter(cmd);
+        //        DataSet ds = new DataSet();
+        //        da.Fill(ds);
+        //        rowid = Convert.ToInt32(ds.Tables[0].Rows[0][0].ToString());
+
+        //    }
+        //    else
+        //    {
+        //        MessageBox.Show("Click on the items in the bid column to change or delete the data", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //    }
+        //}
         private void buttonClose_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
+        private void LoadBooks()
+        {
+            //connectionTry.FilterBooksByAccountId(accountId,x );
+            //dataGridView1.DataSource = connectionTry.FilterBooksByAccountId(accountId,x).Tables[0];
+
+            string x = "SELECT * FROM Books WHERE accountId = "+@accountId;
+            SqlConnectionTry connectionTry = new SqlConnectionTry();
+            DataSet filteredData = connectionTry.connectionForStudents(x ,accountId);
+            dataGridView1.DataSource = filteredData.Tables[0];
+        }
+
+        private void clearBTN_Function(object sender, EventArgs e)
         {
             textBox1.Clear();
-            panel2.Visible = false;
-
-            SqlConnection con = new SqlConnection(@"Data Source=librarymanagesystem.database.windows.net;Initial Catalog=SZB;User ID=adminXYZ;Password=GorzWlkp!;Connect Timeout=60;Encrypt=True;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
-            SqlCommand cmd = new SqlCommand("SELECT * FROM Books", con);
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
-            DataSet ds = new DataSet();
-            da.Fill(ds);
-
-            dataGridView1.DataSource = ds.Tables[0];
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void Books_Load(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Dane will be updated, Confirm?", "Warning", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+            // TODO: This line of code loads data into the 'sZBDataSet.Books' table. You can move, or remove it, as needed.
+            this.booksTableAdapter.Fill(this.sZBDataSet.Books);
+
+        }
+
+        private void SearchingInLive(object sender, EventArgs e)
+        {
+            if (textBox1.Text != "")
             {
-                string bname = textBox2.Text;
-                string bauthor = textBox3.Text;
-                string publication = textBox4.Text;
-                int bquantity = Convert.ToInt32(textBox5.Text);
 
-                SqlConnection con = new SqlConnection(@"Data Source=librarymanagesystem.database.windows.net;Initial Catalog=SZB;User ID=adminXYZ;Password=GorzWlkp!;Connect Timeout=60;Encrypt=True;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
-                SqlCommand cmd = new SqlCommand("UPDATE Books SET bName = '" + bname + "', bAuthor = '" + bauthor + "', bPublication = '" + publication + "', bQuantity = " + bquantity + " WHERE bid=" + rowid + "", con);
-                SqlDataAdapter da = new SqlDataAdapter(cmd);
-                DataSet ds = new DataSet();
-                da.Fill(ds);
 
-                MessageBox.Show("Please Refresh to see changes", "Success", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-        }
+                string sqlCommand = "SELECT * FROM Books WHERE bName LIKE '" + textBox1.Text + "%' and accountId = " + @accountId + "";
+                SqlConnectionTry connectionTry = new SqlConnectionTry();
+                DataSet filteredData = connectionTry.connectionForStudents( sqlCommand , accountId);
 
-        private void button3_Click(object sender, EventArgs e)
-        {
-            if (MessageBox.Show("Dane will be deleted, Confirm?", "Warning", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
-            {
-                SqlConnection con = new SqlConnection(@"Data Source=librarymanagesystem.database.windows.net;Initial Catalog=SZB;User ID=adminXYZ;Password=GorzWlkp!;Connect Timeout=60;Encrypt=True;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
-                SqlCommand cmd = new SqlCommand("DELETE FROM Books WHERE bid=" + rowid + "", con);
-                SqlDataAdapter da = new SqlDataAdapter(cmd);
-                DataSet ds = new DataSet();
-                da.Fill(ds);
-
-                MessageBox.Show("Please Refresh to see changes", "Success", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-            panel2.Visible = false;
-        }
-
-        int bid;
-        int rowid;
-        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if ((dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null) && (e.ColumnIndex == 0))
-            {
-                bid = int.Parse(dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString());
-                panel2.Visible = true;
-                SqlConnection con = new SqlConnection(@"Data Source=librarymanagesystem.database.windows.net;Initial Catalog=SZB;User ID=adminXYZ;Password=GorzWlkp!;Connect Timeout=60;Encrypt=True;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
-                SqlCommand cmd = new SqlCommand("SELECT * FROM Books WHERE bid=" + bid + "", con);
-                SqlDataAdapter da = new SqlDataAdapter(cmd);
-                DataSet ds = new DataSet();
-                da.Fill(ds);
-
-                rowid = Convert.ToInt32(ds.Tables[0].Rows[0][0].ToString());
-
-                textBox2.Text = ds.Tables[0].Rows[0][1].ToString();
-                textBox3.Text = ds.Tables[0].Rows[0][2].ToString();
-                textBox4.Text = ds.Tables[0].Rows[0][3].ToString();
-                textBox5.Text = ds.Tables[0].Rows[0][4].ToString();
+                dataGridView1.DataSource = connectionTry.connectionForStudents(sqlCommand, accountId).Tables[0];
             }
             else
             {
-                MessageBox.Show("Click on the items in the bid column to change or delete the data", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                string sqlCommand = "SELECT * FROM Books where accountId =" + @accountId + "";
+
+                SqlConnectionTry connectionTry = new SqlConnectionTry();
+                DataSet filteredData = connectionTry.connectionForStudents(sqlCommand, accountId);
+
+                dataGridView1.DataSource = connectionTry.connectionForStudents(sqlCommand, accountId).Tables[0];
             }
+        }
+
+        private void dataGridView1_ReadOnlyChanged(object sender, EventArgs e)
+        {
+            dataGridView1.ReadOnly = true;
         }
     }
 }
