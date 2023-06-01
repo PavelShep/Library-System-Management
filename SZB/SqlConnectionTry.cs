@@ -12,18 +12,26 @@ namespace SZB
     {
         private int accountId;
 
+        public DataSet loginConnection(string commandConnection) 
+        {
+            SqlConnection con = new SqlConnection(@"Data Source=librarymanagesystem.database.windows.net;Initial Catalog=SZB;User ID=adminXYZ;Password=GorzWlkp!;Connect Timeout=10;Encrypt=True;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+            SqlCommand cmd = new SqlCommand(commandConnection, con); // Додайте параметр con тут
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            DataSet ds = new DataSet();
+            da.Fill(ds);
+            return ds;
+        }
 
+        public DataSet connectionForStudents(string commandConnection , int accountId)
+        {
 
-        //public DataSet connectionForBooks(string commandConnection )
-        //{
-
-        //    SqlConnection con = new SqlConnection(@"Data Source=librarymanagesystem.database.windows.net;Initial Catalog=SZB;User ID=adminXYZ;Password=GorzWlkp!;Connect Timeout=10;Encrypt=True;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
-        //    SqlCommand cmd = new SqlCommand(commandConnection, con); // Додайте параметр con тут
-        //    SqlDataAdapter da = new SqlDataAdapter(cmd);
-        //    DataSet ds = new DataSet();
-        //    da.Fill(ds);
-        //    return ds;
-        //}
+            SqlConnection con = new SqlConnection(@"Data Source=librarymanagesystem.database.windows.net;Initial Catalog=SZB;User ID=adminXYZ;Password=GorzWlkp!;Connect Timeout=10;Encrypt=True;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+            SqlCommand cmd = new SqlCommand(commandConnection, con); // Додайте параметр con тут
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            DataSet ds = new DataSet();
+            da.Fill(ds);
+            return ds;
+        }
 
         public DataSet FilterBooksByAccountId(int accountId , string commandConnection)
         {

@@ -10,6 +10,7 @@ using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 
 namespace SZB
 {
@@ -24,23 +25,6 @@ namespace SZB
             this.AcceptButton = button2;
         }
 
-        //public int nConnection()
-        //{
-        //    bool networkUp = System.Net.NetworkInformation.NetworkInterface.GetIsNetworkAvailable();
-        //    if (networkUp == false)
-        //    {
-        //        MessageBox.Show("No internet connection , try again");
-        //        Application.Restart();
-        //        this.Close();
-        //        return Convert.ToInt32(networkUp);
-        //    }
-        //    else
-        //    {
-        //        networkUp= true;
-        //        return Convert.ToInt32(networkUp);
-        //    }
-        //}
-
         private void button1_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -48,34 +32,36 @@ namespace SZB
 
         private void button2_Click(object sender, EventArgs e)
         {
-            network_connection network_Connection= new network_connection();
-            
+            network_connection network_Connection = new network_connection();
             if (network_Connection.nConnection() == 1)
             {
-                
-                SqlConnection con = new SqlConnection(@"Data Source=librarymanagesystem.database.windows.net;Initial Catalog=SZB;User ID=adminXYZ;Password=GorzWlkp!;Connect Timeout=10;Encrypt=True;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
-                SqlCommand cmd = new SqlCommand("SELECT * FROM LoginTable WHERE login = '" + textBox1.Text + "' AND password = '" + textBox2.Text + "' ", con);
-                SqlDataAdapter da = new SqlDataAdapter(cmd);
-                DataSet ds = new DataSet();
-                da.Fill(ds);
-                //Error
-
-
-
-                if (ds.Tables[0].Rows.Count != 0)
+                if (textBox1.Text == "SuperUser" && textBox2.Text == "Super5623")
                 {
-
+                    SuperUser form = new SuperUser();
                     this.Hide();
-                    int accountId = Convert.ToInt32(ds.Tables[0].Rows[0]["Id"]);
-                    Dashboard dsa = new Dashboard(accountId);
-                    dsa.Show();
+                    form.ShowDialog();
                 }
                 else
                 {
-                    MessageBox.Show("Nieprawidłowa nazwa użytkownika lub nieprawidłowe hasło", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    string sqlCommand = "SELECT * FROM LoginTable WHERE login = '" + textBox1.Text + "' AND password = '" + textBox2.Text + "'";
+                    SqlConnectionTry connectionTry = new SqlConnectionTry();
+                    DataSet filteredData = connectionTry.loginConnection(sqlCommand);
+
+                    if (filteredData.Tables[0].Rows.Count != 0)
+                    {
+                        this.Hide();
+                        int accountId = Convert.ToInt32(filteredData.Tables[0].Rows[0]["Id"]);
+                        Dashboard dsa = new Dashboard(accountId);
+                        dsa.Show();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Invalid username or password", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
         }
+
 
         private void textBox1_MouseClick(object sender, MouseEventArgs e)
         {
@@ -92,7 +78,6 @@ namespace SZB
             if (textBox2.Text == "Password" && PasswordCounter == 0)
             {   
                 textBox2.Clear();
-                
                 PasswordCounter++;
             }
         }
@@ -111,6 +96,17 @@ namespace SZB
                     button2.PerformClick();
                 }
             }
+        }
+
+        private bool isPasswordVisible = false;
+        private Image visibleImage = Properties.Resources.visible; // Replace with your visible image
+        private Image hiddenImage = Properties.Resources.hidden; // Replace with your hidden image
+
+        private void checkPSWD(object sender, EventArgs e)
+        {
+            isPasswordVisible = !isPasswordVisible;
+            pictureBox1.Image = isPasswordVisible ? visibleImage : hiddenImage;
+            textBox2.PasswordChar = isPasswordVisible ? '\0' : '*';
         }
     }
 }

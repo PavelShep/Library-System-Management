@@ -10,8 +10,6 @@ using System.Windows.Forms;
 
 namespace SZB
 {
-
-
     public partial class Dashboard : Form
     {
         int clcount = 0;
@@ -23,82 +21,6 @@ namespace SZB
             CustomizeDesing();
             this.accountId = accountId;
         }
-
-//        private void dodawaćKsiążkiToolStripMenuItem_Click(object sender, EventArgs e)
-//        {
-//            //prevent Form(AddBooks) from opening multiple times(uniemożliwić wielokrotne otwieranie AddBooks)
-//            if (restrict == 0)
-//            {
-//                restrict++;
-//                AddBooks abs = new AddBooks();
-//                abs.Show();
-//            }
-//            else
-//            {
-//                MessageBox.Show("Formularz jest już otwarty!");
-//            }
-//;
-//        }
-
-        //private void przeglądaćKsiążkiToolStripMenuItem_Click(object sender, EventArgs e)
-        //{
-        //    //prevent Form(ViewBooks) from opening multiple times(uniemożliwić wielokrotne otwieranie AddBooks)
-        //    if (restrict == 0)
-        //    {
-        //        restrict++;
-        //        ViewBooks vb = new ViewBooks();
-        //        vb.Show();
-        //    }
-        //    else
-        //    {
-        //        MessageBox.Show("Formularz jest już otwarty!");
-        //    }
-        //}
-
-        //private void dodaćStudentaToolStripMenuItem_Click(object sender, EventArgs e)
-        //{
-        //    prevent Form(AddStudents) from opening multiple times(uniemożliwić wielokrotne otwieranie AddBooks)
-        //    if (restrict == 0)
-        //    {
-        //        restrict++;
-        //        AddStudents ass = new AddStudents();
-        //        ass.Show();
-        //    }
-        //    else
-        //    {
-        //        MessageBox.Show("Formularz jest już otwarty!");
-        //    }
-        //}
-
-        //private void przeglądaćStudentówToolStripMenuItem_Click(object sender, EventArgs e)
-        //{
-        //    prevent Form(AddStudents) from opening multiple times(uniemożliwić wielokrotne otwieranie AddBooks)
-        //    if (restrict == 0)
-        //    {
-        //        restrict++;
-        //        ViewStudents vs = new ViewStudents();
-        //        vs.Show();
-        //    }
-        //    else
-        //    {
-        //        MessageBox.Show("Formularz jest już otwarty!");
-        //    }
-        //}
-
-        //private void issueBooksToolStripMenuItem_Click(object sender, EventArgs e)
-        //{
-        //    prevent Form(AddStudents) from opening multiple times(uniemożliwić wielokrotne otwieranie AddBooks)
-        //    if (restrict == 0)
-        //    {
-        //        restrict++;
-        //        IssueBooks ib = new IssueBooks();
-        //        ib.Show();
-        //    }
-        //    else
-        //    {
-        //        MessageBox.Show("Formularz jest już otwarty!");
-        //    }
-        //}
 
         private void CustomizeDesing()
         {
@@ -147,10 +69,7 @@ namespace SZB
 
         }
 
-        public void menu_hide()
-        {
-            this.Hide();
-        }
+
 
 
         private void buttonBooks_Click(object sender, EventArgs e)
@@ -168,26 +87,23 @@ namespace SZB
         {
             // Замініть на ваш ID аккаунту
             OpenMainForm(new Books(accountId));
-            
-
-            
             HideMenu();
         }
         private void button3_Click(object sender, EventArgs e)
         {
-            
+            OpenMainForm(new IssueBooks(accountId));
             HideMenu();
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
-            
-            menu_hide();
+            OpenMainForm(new Students(accountId));
+            HideMenu();
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            menu_hide();
+            HideMenu();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -200,6 +116,27 @@ namespace SZB
         private void Dashboard_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
+        }
+
+        int time_counter = 0;
+        private void First_timer_Try_Tick(object sender, EventArgs e)
+        {
+            if (time_counter == 0)
+            { 
+            network_connection connection = new network_connection();
+            connection.nConnection();
+            time_counter++;
+            if(connection.nConnection() == 1) 
+                {
+                    time_counter= 0;
+                }
+            }
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            OpenMainForm(new EditInfoBooks(accountId));
+            HideMenu();
         }
     }
 }

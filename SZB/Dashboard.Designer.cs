@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panelMenu = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.panelSubMenuStudents = new System.Windows.Forms.Panel();
@@ -35,10 +36,12 @@
             this.button5 = new System.Windows.Forms.Button();
             this.buttonStudentss = new System.Windows.Forms.Button();
             this.panelSubMenuBooks = new System.Windows.Forms.Panel();
+            this.button6 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.buttonBooks = new System.Windows.Forms.Button();
             this.panelMain = new System.Windows.Forms.Panel();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panelMenu.SuspendLayout();
             this.panelSubMenuStudents.SuspendLayout();
             this.panelSubMenuBooks.SuspendLayout();
@@ -55,7 +58,7 @@
             this.panelMenu.Controls.Add(this.buttonBooks);
             this.panelMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelMenu.Location = new System.Drawing.Point(0, 0);
-            this.panelMenu.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panelMenu.Margin = new System.Windows.Forms.Padding(2);
             this.panelMenu.Name = "panelMenu";
             this.panelMenu.Size = new System.Drawing.Size(162, 557);
             this.panelMenu.TabIndex = 0;
@@ -68,7 +71,7 @@
             this.button1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.White;
             this.button1.Location = new System.Drawing.Point(0, 522);
-            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(65, 35);
             this.button1.TabIndex = 4;
@@ -82,8 +85,8 @@
             this.panelSubMenuStudents.Controls.Add(this.button4);
             this.panelSubMenuStudents.Controls.Add(this.button5);
             this.panelSubMenuStudents.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelSubMenuStudents.Location = new System.Drawing.Point(0, 249);
-            this.panelSubMenuStudents.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panelSubMenuStudents.Location = new System.Drawing.Point(0, 312);
+            this.panelSubMenuStudents.Margin = new System.Windows.Forms.Padding(2);
             this.panelSubMenuStudents.Name = "panelSubMenuStudents";
             this.panelSubMenuStudents.Size = new System.Drawing.Size(162, 128);
             this.panelSubMenuStudents.TabIndex = 2;
@@ -98,7 +101,7 @@
             this.button4.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button4.ForeColor = System.Drawing.Color.White;
             this.button4.Location = new System.Drawing.Point(0, 60);
-            this.button4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button4.Margin = new System.Windows.Forms.Padding(2);
             this.button4.Name = "button4";
             this.button4.Padding = new System.Windows.Forms.Padding(22, 0, 0, 0);
             this.button4.Size = new System.Drawing.Size(162, 64);
@@ -118,7 +121,7 @@
             this.button5.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button5.ForeColor = System.Drawing.Color.White;
             this.button5.Location = new System.Drawing.Point(0, 0);
-            this.button5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button5.Margin = new System.Windows.Forms.Padding(2);
             this.button5.Name = "button5";
             this.button5.Padding = new System.Windows.Forms.Padding(22, 0, 0, 0);
             this.button5.Size = new System.Drawing.Size(162, 60);
@@ -135,8 +138,8 @@
             this.buttonStudentss.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonStudentss.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.buttonStudentss.ForeColor = System.Drawing.Color.White;
-            this.buttonStudentss.Location = new System.Drawing.Point(0, 181);
-            this.buttonStudentss.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonStudentss.Location = new System.Drawing.Point(0, 244);
+            this.buttonStudentss.Margin = new System.Windows.Forms.Padding(2);
             this.buttonStudentss.Name = "buttonStudentss";
             this.buttonStudentss.Size = new System.Drawing.Size(162, 68);
             this.buttonStudentss.TabIndex = 3;
@@ -147,14 +150,35 @@
             // panelSubMenuBooks
             // 
             this.panelSubMenuBooks.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
+            this.panelSubMenuBooks.Controls.Add(this.button6);
             this.panelSubMenuBooks.Controls.Add(this.button3);
             this.panelSubMenuBooks.Controls.Add(this.button2);
             this.panelSubMenuBooks.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelSubMenuBooks.Location = new System.Drawing.Point(0, 59);
-            this.panelSubMenuBooks.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panelSubMenuBooks.Margin = new System.Windows.Forms.Padding(2);
             this.panelSubMenuBooks.Name = "panelSubMenuBooks";
-            this.panelSubMenuBooks.Size = new System.Drawing.Size(162, 122);
+            this.panelSubMenuBooks.Size = new System.Drawing.Size(162, 185);
             this.panelSubMenuBooks.TabIndex = 1;
+            // 
+            // button6
+            // 
+            this.button6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(108)))), ((int)(((byte)(181)))), ((int)(((byte)(241)))));
+            this.button6.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button6.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
+            this.button6.FlatAppearance.BorderSize = 3;
+            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button6.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button6.ForeColor = System.Drawing.Color.White;
+            this.button6.Location = new System.Drawing.Point(0, 122);
+            this.button6.Margin = new System.Windows.Forms.Padding(2);
+            this.button6.Name = "button6";
+            this.button6.Padding = new System.Windows.Forms.Padding(22, 0, 0, 0);
+            this.button6.Size = new System.Drawing.Size(162, 60);
+            this.button6.TabIndex = 5;
+            this.button6.Text = "Edit books";
+            this.button6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button6.UseVisualStyleBackColor = false;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // button3
             // 
@@ -166,12 +190,12 @@
             this.button3.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.ForeColor = System.Drawing.Color.White;
             this.button3.Location = new System.Drawing.Point(0, 62);
-            this.button3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button3.Margin = new System.Windows.Forms.Padding(2);
             this.button3.Name = "button3";
             this.button3.Padding = new System.Windows.Forms.Padding(22, 0, 0, 0);
             this.button3.Size = new System.Drawing.Size(162, 60);
             this.button3.TabIndex = 4;
-            this.button3.Text = "add book";
+            this.button3.Text = "Issue books";
             this.button3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.button3_Click);
@@ -186,7 +210,7 @@
             this.button2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.White;
             this.button2.Location = new System.Drawing.Point(0, 0);
-            this.button2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
             this.button2.Padding = new System.Windows.Forms.Padding(22, 0, 0, 0);
             this.button2.Size = new System.Drawing.Size(162, 62);
@@ -204,7 +228,7 @@
             this.buttonBooks.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.buttonBooks.ForeColor = System.Drawing.Color.White;
             this.buttonBooks.Location = new System.Drawing.Point(0, 0);
-            this.buttonBooks.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonBooks.Margin = new System.Windows.Forms.Padding(2);
             this.buttonBooks.Name = "buttonBooks";
             this.buttonBooks.Size = new System.Drawing.Size(162, 59);
             this.buttonBooks.TabIndex = 1;
@@ -217,11 +241,16 @@
             this.panelMain.BackColor = System.Drawing.SystemColors.Control;
             this.panelMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelMain.Location = new System.Drawing.Point(162, 0);
-            this.panelMain.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panelMain.Margin = new System.Windows.Forms.Padding(2);
             this.panelMain.MinimumSize = new System.Drawing.Size(375, 244);
             this.panelMain.Name = "panelMain";
             this.panelMain.Size = new System.Drawing.Size(686, 557);
             this.panelMain.TabIndex = 3;
+            // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Tick += new System.EventHandler(this.First_timer_Try_Tick);
             // 
             // Dashboard
             // 
@@ -231,7 +260,7 @@
             this.Controls.Add(this.panelMain);
             this.Controls.Add(this.panelMenu);
             this.ForeColor = System.Drawing.SystemColors.Info;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MinimumSize = new System.Drawing.Size(600, 500);
             this.Name = "Dashboard";
             this.Text = "Dashboard";
@@ -256,5 +285,7 @@
         private System.Windows.Forms.Button buttonStudentss;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Panel panelMain;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Button button6;
     }
 }

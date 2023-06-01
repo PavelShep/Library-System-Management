@@ -25,3 +25,7 @@ D:\Trying\c#\Library-System-Management-version-3.0\SZB\obj\Debug\SZB.pdb
 D:\Trying\c#\Library-System-Management-version-3.0\SZB\bin\Debug\SZB.exe.config
 D:\Trying\c#\Library-System-Management-version-3.0\SZB\bin\Debug\SZB.exe
 D:\Trying\c#\Library-System-Management-version-3.0\SZB\bin\Debug\SZB.pdb
+D:\Trying\c#\Library-System-Management-version-3.0\SZB\obj\Debug\SZB.IssueBooks.resources
+D:\Trying\c#\Library-System-Management-version-3.0\SZB\obj\Debug\SZB.Students.resources
+D:\Trying\c#\Library-System-Management-version-3.0\SZB\obj\Debug\SZB.SuperUser.resources
+D:\Trying\c#\Library-System-Management-version-3.0\SZB\obj\Debug\SZB.EditInfoBooks.resources

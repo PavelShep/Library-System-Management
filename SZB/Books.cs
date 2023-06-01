@@ -9,6 +9,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 
 namespace SZB
@@ -25,8 +26,27 @@ namespace SZB
             LoadBooks();
         }
 
+        int bid;
+        int rowid;
+        //private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        //{
+        //    if ((e.ColumnIndex == 0) && (dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null))
+        //    {
+        //        bid = int.Parse(dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString());
 
+        //        SqlConnection con = new SqlConnection(@"Data Source=librarymanagesystem.database.windows.net;Initial Catalog=SZB;User ID=adminXYZ;Password=GorzWlkp!;Connect Timeout=60;Encrypt=True;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+        //        SqlCommand cmd = new SqlCommand("SELECT * FROM Books WHERE bid=" + bid + " and accountId = " + accountId + "", con);
+        //        SqlDataAdapter da = new SqlDataAdapter(cmd);
+        //        DataSet ds = new DataSet();
+        //        da.Fill(ds);
+        //        rowid = Convert.ToInt32(ds.Tables[0].Rows[0][0].ToString());
 
+        //    }
+        //    else
+        //    {
+        //        MessageBox.Show("Click on the items in the bid column to change or delete the data", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //    }
+        //}
         private void buttonClose_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -34,56 +54,19 @@ namespace SZB
 
         private void LoadBooks()
         {
-            
-            string x = "SELECT * FROM Books WHERE accountId = "+@accountId;
-            SqlConnectionTry connectionTry = new SqlConnectionTry();
             //connectionTry.FilterBooksByAccountId(accountId,x );
             //dataGridView1.DataSource = connectionTry.FilterBooksByAccountId(accountId,x).Tables[0];
 
-            DataSet filteredData = connectionTry.FilterBooksByAccountId(accountId, x);
+            string x = "SELECT * FROM Books WHERE accountId = "+@accountId;
+            SqlConnectionTry connectionTry = new SqlConnectionTry();
+            DataSet filteredData = connectionTry.connectionForStudents(x ,accountId);
             dataGridView1.DataSource = filteredData.Tables[0];
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
+        private void clearBTN_Function(object sender, EventArgs e)
         {
-            LoadBooks();
+            textBox1.Clear();
         }
-
-        private void buttonCl_Click(object sender, EventArgs e)
-        {
-            textBox2.Clear();
-            textBox3.Clear();
-            textBox4.Clear();
-            textBox5.Clear();
-        }
-
-        private void buttonAdd_Click(object sender, EventArgs e)
-        {
-            if (textBox2.Text == "" || textBox3.Text == "" || textBox4.Text == "" || textBox5.Text == "")
-            {
-                MessageBox.Show("Puste pole niedozwolone", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            else
-            {
-                string bname = textBox2.Text;
-                string bauthor = textBox3.Text;
-                string bpublication = textBox5.Text;
-                int price = Convert.ToInt32(textBox4.Text);
-
-                SqlConnection con = new SqlConnection(@"Data Source=librarymanagesystem.database.windows.net;Initial Catalog=SZB;User ID=adminXYZ;Password=GorzWlkp!;Connect Timeout=60;Encrypt=True;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
-                con.Open();
-                SqlCommand cmd = new SqlCommand("INSERT INTO Books (bName, bAuthor, bPublication, bQuantity , accountId) VALUES ('" + bname + "','" + bauthor + "', '" + bpublication + "'," + price + "," + accountId + ")", con);
-                cmd.ExecuteNonQuery();
-                con.Close();
-
-                MessageBox.Show("Dane zapisane", "Sukces", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                textBox2.Clear();
-                textBox3.Clear();
-                textBox4.Clear();
-                textBox5.Clear();
-            }
-        }
-
 
         private void Books_Load(object sender, EventArgs e)
         {
@@ -92,11 +75,32 @@ namespace SZB
 
         }
 
-        private void First_timer_Try_Tick(object sender, EventArgs e)
+        private void SearchingInLive(object sender, EventArgs e)
         {
-            network_connection connection = new network_connection();
-            connection.nConnection();
+            if (textBox1.Text != "")
+            {
+
+
+                string sqlCommand = "SELECT * FROM Books WHERE bName LIKE '" + textBox1.Text + "%' and accountId = " + @accountId + "";
+                SqlConnectionTry connectionTry = new SqlConnectionTry();
+                DataSet filteredData = connectionTry.connectionForStudents( sqlCommand , accountId);
+
+                dataGridView1.DataSource = connectionTry.connectionForStudents(sqlCommand, accountId).Tables[0];
+            }
+            else
+            {
+                string sqlCommand = "SELECT * FROM Books where accountId =" + @accountId + "";
+
+                SqlConnectionTry connectionTry = new SqlConnectionTry();
+                DataSet filteredData = connectionTry.connectionForStudents(sqlCommand, accountId);
+
+                dataGridView1.DataSource = connectionTry.connectionForStudents(sqlCommand, accountId).Tables[0];
+            }
         }
 
+        private void dataGridView1_ReadOnlyChanged(object sender, EventArgs e)
+        {
+            dataGridView1.ReadOnly = true;
+        }
     }
 }
