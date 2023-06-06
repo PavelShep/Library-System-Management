@@ -14,7 +14,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 
 namespace SZB
 {
-    
+
     public partial class Login : Form
     {
         public int LoginCounter = 0;
@@ -65,7 +65,7 @@ namespace SZB
 
         private void textBox1_MouseClick(object sender, MouseEventArgs e)
         {
-            if(textBox1.Text == "Login" && LoginCounter == 0) 
+            if (textBox1.Text == "Login" && LoginCounter == 0)
             {
                 textBox1.Clear();
                 LoginCounter++;
@@ -74,12 +74,18 @@ namespace SZB
 
         private void textBox2_MouseClick(object sender, MouseEventArgs e)
         {
-         
+
             if (textBox2.Text == "Password" && PasswordCounter == 0)
-            {   
+            {
                 textBox2.Clear();
                 PasswordCounter++;
             }
+        }
+
+        private void checkBoxVisible_CheckedChanged(object sender, EventArgs e)
+        {
+            // Toggle password visibility based on the checkbox state
+            textBox2.PasswordChar = checkBox1.Checked ? '\0' : '*';
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)

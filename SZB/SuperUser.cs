@@ -15,6 +15,7 @@ namespace SZB
 {
     public partial class SuperUser : Form
     {
+        
         public SuperUser()
         {
             InitializeComponent();
@@ -28,13 +29,16 @@ namespace SZB
             PasswordBTN.PasswordChar = '*';
         }
 
+
+
         private void LoginBTN_MouseClick(object sender, MouseEventArgs e)
         {
-            if (LoginBTN.Text == "Login/Name" && LoginCounter == 0)
+            if (LoginBTN.Text == "Login" && LoginCounter == 0)
             {
                 LoginBTN.Clear();
                 LoginCounter++;
             }
+            
         }
 
         private void PasswordBTN_MouseClick(object sender, MouseEventArgs e)
@@ -48,14 +52,14 @@ namespace SZB
 
         private void textBox1_MouseClick(object sender, MouseEventArgs e)
         {
-            if (textBox1.Text == "Confirm" && ConfirmCounter == 0)
+            if (ConfirmPasswordBTN.Text == "Password" && ConfirmCounter == 0)
             {
-                textBox1.Clear();
+                ConfirmPasswordBTN.Clear();
                 ConfirmCounter++;
             }
         }
 
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        /*private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
             if (checkBox1.Checked)
             {
@@ -68,7 +72,7 @@ namespace SZB
                 PasswordBTN.PasswordChar = '*'; // Set the PasswordChar property to '*'
             }
         }
-
+        */
         private void SuperUser_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Restart();
@@ -77,24 +81,67 @@ namespace SZB
 
         private void RegisterBTN_Click(object sender, EventArgs e)
         {
-            string sqlCommand = "INSERT INTO LoginTable (login, password) VALUES (@Login, @Password)";
-            string connectionString = @"Data Source=librarymanagesystem.database.windows.net;Initial Catalog=SZB;User ID=adminXYZ;Password=GorzWlkp!;Connect Timeout=60;Encrypt=True;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            if (ConfirmPasswordBTN.Text != PasswordBTN.Text)
             {
-                using (SqlCommand command = new SqlCommand(sqlCommand, connection))
-                {
-                    command.Parameters.AddWithValue("@Login", LoginBTN.Text);
-                    command.Parameters.AddWithValue("@Password", PasswordBTN.Text);
-
-                    connection.Open();
-                    command.ExecuteNonQuery();
-                    connection.Close();
-                }
+                MessageBox.Show("Password should be the same");
+                PasswordBTN.Clear();
+                ConfirmPasswordBTN.Clear();
             }
+            else
+            {
+                string sqlCommand = "INSERT INTO LoginTable (login, password) VALUES (@Login, @Password)";
+                string connectionString = @"Data Source=librarymanagesystem.database.windows.net;Initial Catalog=SZB;User ID=adminXYZ;Password=GorzWlkp!;Connect Timeout=60;Encrypt=True;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 
-            MessageBox.Show("Dane zapisane", "Sukces", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    using (SqlCommand command = new SqlCommand(sqlCommand, connection))
+                    {
+                        command.Parameters.AddWithValue("@Login", LoginBTN.Text);
+                        command.Parameters.AddWithValue("@Password", PasswordBTN.Text);
+
+                        connection.Open();
+                        command.ExecuteNonQuery();
+                        connection.Close();
+                    }
+                }
+
+                MessageBox.Show("Dane zapisane", "Sukces", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            
+                Application.Exit();
+            
+        }
+
+        private void checkBoxVisible_CheckedChanged(object sender, EventArgs e)
+        {
+            // Toggle password visibility based on the checkbox state
+            PasswordBTN.PasswordChar = checkBox2.Checked ? '\0' : '*';
+        }
+
+        private void checkBox_CheckedChanged(object sender, EventArgs e)
+        {
+            // Toggle password visibility based on the checkbox state
+            ConfirmPasswordBTN.PasswordChar = checkBox1.Checked ? '\0' : '*';
+        }
+
+
+        private void ConfirmBTN_TextChanged(object sender, EventArgs e)
+        {
+            ConfirmPasswordBTN.PasswordChar = '*';
+        }
+
+        private void LoginBTN_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.Back)
+            {
+                LoginBTN.Text textBox = (TextBox)sender;
+                LoginBTN.Text = string.Empty;
+                e.SuppressKeyPress = true; // Попередження відображення символу "Backspace"
+            }
+        }
     }
 }
