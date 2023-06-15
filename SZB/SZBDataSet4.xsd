@@ -9,10 +9,10 @@
         <Tables>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="IRBookTableAdapter" GeneratorDataComponentClassName="IRBookTableAdapter" Name="IRBook" UserDataComponentName="IRBookTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="SZBConnectionString (Settings)" DbObjectName="SZB.dbo.IRBook" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="SZBConnectionString (Settings)" DbObjectName="SZB.dbo.IRBook" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
-                  <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>SELECT std_name, std_phone, std_email, book_name, book_issue_date FROM dbo.IRBook</CommandText>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT id, std_name, std_phone, std_email, book_name, book_issue_date FROM dbo.IRBook</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
@@ -24,6 +24,7 @@
               <Mapping SourceColumn="std_email" DataSetColumn="std_email" />
               <Mapping SourceColumn="book_name" DataSetColumn="book_name" />
               <Mapping SourceColumn="book_issue_date" DataSetColumn="book_issue_date" />
+              <Mapping SourceColumn="id" DataSetColumn="id" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -32,51 +33,56 @@
       </DataSource>
     </xs:appinfo>
   </xs:annotation>
-  <xs:element name="SZBDataSet4" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_UserDSName="SZBDataSet4" msprop:Generator_DataSetName="SZBDataSet4">
+  <xs:element name="SZBDataSet4" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="SZBDataSet4" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="SZBDataSet4">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="IRBook" msprop:Generator_RowEvHandlerName="IRBookRowChangeEventHandler" msprop:Generator_RowDeletedName="IRBookRowDeleted" msprop:Generator_RowDeletingName="IRBookRowDeleting" msprop:Generator_RowEvArgName="IRBookRowChangeEvent" msprop:Generator_TablePropName="IRBook" msprop:Generator_RowChangedName="IRBookRowChanged" msprop:Generator_RowChangingName="IRBookRowChanging" msprop:Generator_TableClassName="IRBookDataTable" msprop:Generator_RowClassName="IRBookRow" msprop:Generator_TableVarName="tableIRBook" msprop:Generator_UserTableName="IRBook">
+        <xs:element name="IRBook" msprop:Generator_RowClassName="IRBookRow" msprop:Generator_RowEvHandlerName="IRBookRowChangeEventHandler" msprop:Generator_RowDeletedName="IRBookRowDeleted" msprop:Generator_RowDeletingName="IRBookRowDeleting" msprop:Generator_RowEvArgName="IRBookRowChangeEvent" msprop:Generator_TablePropName="IRBook" msprop:Generator_RowChangedName="IRBookRowChanged" msprop:Generator_UserTableName="IRBook" msprop:Generator_RowChangingName="IRBookRowChanging" msprop:Generator_TableClassName="IRBookDataTable" msprop:Generator_TableVarName="tableIRBook">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="std_name" msprop:Generator_ColumnPropNameInRow="std_name" msprop:Generator_ColumnPropNameInTable="std_nameColumn" msprop:Generator_ColumnVarNameInTable="columnstd_name" msprop:Generator_UserColumnName="std_name">
+              <xs:element name="std_name" msprop:Generator_UserColumnName="std_name" msprop:Generator_ColumnPropNameInTable="std_nameColumn" msprop:Generator_ColumnPropNameInRow="std_name" msprop:Generator_ColumnVarNameInTable="columnstd_name">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="50" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="std_phone" msprop:Generator_ColumnPropNameInRow="std_phone" msprop:Generator_ColumnPropNameInTable="std_phoneColumn" msprop:Generator_ColumnVarNameInTable="columnstd_phone" msprop:Generator_UserColumnName="std_phone">
+              <xs:element name="std_phone" msprop:Generator_UserColumnName="std_phone" msprop:Generator_ColumnPropNameInTable="std_phoneColumn" msprop:Generator_ColumnPropNameInRow="std_phone" msprop:Generator_ColumnVarNameInTable="columnstd_phone">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="20" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="std_email" msprop:Generator_ColumnPropNameInRow="std_email" msprop:Generator_ColumnPropNameInTable="std_emailColumn" msprop:Generator_ColumnVarNameInTable="columnstd_email" msprop:Generator_UserColumnName="std_email">
+              <xs:element name="std_email" msprop:Generator_UserColumnName="std_email" msprop:Generator_ColumnPropNameInTable="std_emailColumn" msprop:Generator_ColumnPropNameInRow="std_email" msprop:Generator_ColumnVarNameInTable="columnstd_email">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="30" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="book_name" msprop:Generator_ColumnPropNameInRow="book_name" msprop:Generator_ColumnPropNameInTable="book_nameColumn" msprop:Generator_ColumnVarNameInTable="columnbook_name" msprop:Generator_UserColumnName="book_name">
+              <xs:element name="book_name" msprop:Generator_UserColumnName="book_name" msprop:Generator_ColumnPropNameInTable="book_nameColumn" msprop:Generator_ColumnPropNameInRow="book_name" msprop:Generator_ColumnVarNameInTable="columnbook_name">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="50" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="book_issue_date" msprop:Generator_ColumnPropNameInRow="book_issue_date" msprop:Generator_ColumnPropNameInTable="book_issue_dateColumn" msprop:Generator_ColumnVarNameInTable="columnbook_issue_date" msprop:Generator_UserColumnName="book_issue_date">
+              <xs:element name="book_issue_date" msprop:Generator_UserColumnName="book_issue_date" msprop:Generator_ColumnPropNameInTable="book_issue_dateColumn" msprop:Generator_ColumnPropNameInRow="book_issue_date" msprop:Generator_ColumnVarNameInTable="columnbook_issue_date">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="50" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
+              <xs:element name="id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_UserColumnName="id" type="xs:int" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
       </xs:choice>
     </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:IRBook" />
+      <xs:field xpath="mstns:id" />
+    </xs:unique>
   </xs:element>
 </xs:schema>

@@ -46,18 +46,22 @@ namespace SZB
         string bname;
         string bdate;
         string sname;
+        int rowid;
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            
  
             panel2.Visible = true;
             if (e.RowIndex >= 0 && e.ColumnIndex >= 0 && dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
             {
+                rowid = int.Parse(dataGridView1.Rows[e.RowIndex].Cells[5].Value.ToString());
                 sname = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString(); // Error there  'Input string was not in a correct format' after click the object
                 //bname = dataGridView1.Rows[e.RowIndex].Cells[4].Value.ToString(); // error : 'Index was out of range. Must be non-negative and less than the size of the collection.
                 //bdate = dataGridView1.Rows[e.RowIndex].Cells[5].Value.ToString();
                 if (!string.IsNullOrEmpty(sname))
                 {
+
                     bname = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
                     bdate = dataGridView1.Rows[e.RowIndex].Cells[4].Value.ToString();
                 }
@@ -93,7 +97,7 @@ namespace SZB
                 try
                 {
                     con.Open();
-                    SqlCommand cmd = new SqlCommand("UPDATE IRBook SET book_return_date = @returnDate", con);
+                    SqlCommand cmd = new SqlCommand("UPDATE IRBook SET book_return_date = @returnDate where id ="+rowid, con);
                     cmd.Parameters.AddWithValue("@returnDate", dateTimePicker1.Value);
 
                     int rowsAffected = cmd.ExecuteNonQuery();

@@ -159,6 +159,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SZBDataSet3.xsd</DependentUpon>
     </Compile>
+    <Compile Include="SZBDataSet4.cs">
+      <DependentUpon>SZBDataSet4.xsd</DependentUpon>
+    </Compile>
     <Compile Include="SZBDataSet4.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
