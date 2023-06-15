@@ -19,7 +19,9 @@ Do opracowania i wdrożenia projektu wykorzystywane są następujące technologi
 - Kontrola wersji: Git
 
 ## Loginy i hasła dla testów
+
 login: admin
+
 hasło: admin
 
 
