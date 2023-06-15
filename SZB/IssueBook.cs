@@ -21,10 +21,7 @@ namespace SZB
             this.accountId = accountId;
         }
 
-        private void IssueBooks_Load(object sender, EventArgs e)
-        {
-
-        }
+        
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -42,11 +39,11 @@ namespace SZB
                 SqlCommand cmd = new SqlCommand("insert into IRBook (st_id, std_name, std_phone, std_email, book_name, book_issue_date , accountId) values ('" + st_id + "','" + st_name + "','" + st_phone + "','" + st_email + "','" + book_name + "','" + book_issue_date + "','" +accountId + "')", con);
                 cmd.ExecuteNonQuery();
                 con.Close();
-                MessageBox.Show("Book Issued");
+                MessageBox.Show("Książka wypożyczona.");
             }
             else
             {
-                MessageBox.Show("Incorrect data", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Nieprawidłowe dane.", "Błąd!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -72,20 +69,38 @@ namespace SZB
                     textBox1.Clear();
                     textBox2.Clear();
                     textBox3.Clear();
-                    MessageBox.Show("Icorrect id", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Nieprawidłowe id", "Błąd!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
 
-        private void IssueBooks_Load_1(object sender, EventArgs e)
-        {
-            // TODO: This line of code loads data into the 'sZBDataSet3.Books' table. You can move, or remove it, as needed.
-            this.booksTableAdapter1.Fill(this.sZBDataSet3.Books);
-            // TODO: This line of code loads data into the 'sZBDataSetForDisplayIssueBooks.Books' table. You can move, or remove it, as needed.
-            this.booksTableAdapter.Fill(this.sZBDataSetForDisplayIssueBooks.Books);
-            // TODO: This line of code loads data into the 'sZBDataSetFor_IssueBooks.IRBook' table. You can move, or remove it, as needed.
-            this.iRBookTableAdapter.Fill(this.sZBDataSetFor_IssueBooks.IRBook);
+        //private void IssueBooks_Load(object sender, EventArgs e)
+        //{
+        //    // TODO: This line of code loads data into the 'sZBDataSet3.Books' table. You can move, or remove it, as needed.
+        //    this.booksTableAdapter1.Fill(this.sZBDataSet3.Books);
+        //    // TODO: This line of code loads data into the 'sZBDataSetForDisplayIssueBooks.Books' table. You can move, or remove it, as needed.
+        //    this.booksTableAdapter.Fill(this.sZBDataSetForDisplayIssueBooks.Books);
+        //    // TODO: This line of code loads data into the 'sZBDataSetFor_IssueBooks.IRBook' table. You can move, or remove it, as needed.
+        //    this.iRBookTableAdapter.Fill(this.sZBDataSetFor_IssueBooks.IRBook);
 
+        //}
+        private void IssueBooks_Load(object sender, EventArgs e)
+        {
+            SqlConnection con = new SqlConnection(@"Data Source=librarymanagesystem.database.windows.net;Initial Catalog=SZB;User ID=adminXYZ;Password=GorzWlkp!;Connect Timeout=60;Encrypt=True;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+            con.Open();
+            SqlCommand cmd = new SqlCommand("SELECT bName FROM Books Where accountId =" + accountId, con);
+            SqlDataReader Sdr = cmd.ExecuteReader();
+
+            while (Sdr.Read())
+            {
+                for (int i = 0; i < Sdr.FieldCount; i++)
+                {
+                    comboBox1.Items.Add(Sdr.GetString(i));
+                }
+                comboBox1.Text = Sdr.GetString(0);
+            }
+            Sdr.Close();
+            con.Close();
         }
 
         private void button3_Click(object sender, EventArgs e)

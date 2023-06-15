@@ -26,8 +26,8 @@ namespace SZB
             LoadBooks();
         }
 
-        int bid;
-        int rowid;
+        //int bid;
+        //int rowid;
         //private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         //{
         //    if ((e.ColumnIndex == 0) && (dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null))
@@ -98,7 +98,7 @@ namespace SZB
             }
         }
 
-        private void dataGridView1_ReadOnlyChanged(object sender, EventArgs e)
+        private void dataGridView1_ReadOnlyChanged_1(object sender, EventArgs e)
         {
             dataGridView1.ReadOnly = true;
         }

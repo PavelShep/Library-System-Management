@@ -56,7 +56,7 @@ namespace SZB
                     }
                     else
                     {
-                        MessageBox.Show("Invalid username or password", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Niepoprawne hasło!", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
@@ -75,7 +75,7 @@ namespace SZB
         private void textBox2_MouseClick(object sender, MouseEventArgs e)
         {
 
-            if (textBox2.Text == "Password" && PasswordCounter == 0)
+            if (textBox2.Text == "Hasło" && PasswordCounter == 0)
             {
                 textBox2.Clear();
                 PasswordCounter++;

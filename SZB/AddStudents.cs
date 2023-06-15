@@ -34,7 +34,7 @@ namespace SZB
         {
             if (textBox1.Text == "" || textBox2.Text == "" || textBox3.Text == "")
             {
-                MessageBox.Show("Puste pole niedozwolone", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Puste pole niedozwolone.", "Uwaga!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {
@@ -48,11 +48,16 @@ namespace SZB
                 cmd.ExecuteNonQuery();
                 con.Close();
 
-                MessageBox.Show("Dane zapisane", "Sukces", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Dane zapisane.", "Sukces!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 textBox1.Clear();
                 textBox2.Clear();
                 textBox3.Clear();
             }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

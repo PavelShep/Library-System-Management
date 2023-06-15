@@ -42,7 +42,7 @@ namespace SZB
 
         private void PasswordBTN_MouseClick(object sender, MouseEventArgs e)
         {
-            if (PasswordBTN.Text == "Password" && PasswordCounter == 0)
+            if (PasswordBTN.Text == "Hasło" && PasswordCounter == 0)
             {
                 PasswordBTN.Clear();
                 PasswordCounter++;
@@ -51,7 +51,7 @@ namespace SZB
 
         private void textBox1_MouseClick(object sender, MouseEventArgs e)
         {
-            if (ConfirmPasswordBTN.Text == "Password" && ConfirmCounter == 0)
+            if (ConfirmPasswordBTN.Text == "Potwierdź hasło" && ConfirmCounter == 0)
             {
                 ConfirmPasswordBTN.Clear();
                 ConfirmCounter++;
@@ -82,7 +82,7 @@ namespace SZB
         {
             if (ConfirmPasswordBTN.Text != PasswordBTN.Text)
             {
-                MessageBox.Show("Password should be the same");
+                MessageBox.Show("Hasła nie mogą być różne!");
                 PasswordBTN.Clear();
                 ConfirmPasswordBTN.Clear();
             }

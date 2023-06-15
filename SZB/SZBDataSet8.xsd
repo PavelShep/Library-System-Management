@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="SZBDataSet8" targetNamespace="http://tempuri.org/SZBDataSet8.xsd" xmlns:mstns="http://tempuri.org/SZBDataSet8.xsd" xmlns="http://tempuri.org/SZBDataSet8.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="SZBConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="SZBConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.SZB.Properties.Settings.GlobalReference.Default.SZBConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="returnedTableAdapter" GeneratorDataComponentClassName="returnedTableAdapter" Name="returned" UserDataComponentName="returnedTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="SZBConnectionString (Settings)" DbObjectName="SZB.dbo.returned" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT [id studenta], [Imie i nazwisko], [Numer telefonu], [Adres email], [Tytuł książki], [Data wypożyczenia], [Data oddania] FROM dbo.returned</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="id studenta" DataSetColumn="id studenta" />
+              <Mapping SourceColumn="Imie i nazwisko" DataSetColumn="Imie i nazwisko" />
+              <Mapping SourceColumn="Numer telefonu" DataSetColumn="Numer telefonu" />
+              <Mapping SourceColumn="Adres email" DataSetColumn="Adres email" />
+              <Mapping SourceColumn="Tytuł książki" DataSetColumn="Tytuł książki" />
+              <Mapping SourceColumn="Data wypożyczenia" DataSetColumn="Data wypożyczenia" />
+              <Mapping SourceColumn="Data oddania" DataSetColumn="Data oddania" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="SZBDataSet8" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_UserDSName="SZBDataSet8" msprop:Generator_DataSetName="SZBDataSet8">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="returned" msprop:Generator_RowEvHandlerName="returnedRowChangeEventHandler" msprop:Generator_RowDeletedName="returnedRowDeleted" msprop:Generator_RowDeletingName="returnedRowDeleting" msprop:Generator_RowEvArgName="returnedRowChangeEvent" msprop:Generator_TablePropName="returned" msprop:Generator_RowChangedName="returnedRowChanged" msprop:Generator_RowChangingName="returnedRowChanging" msprop:Generator_TableClassName="returnedDataTable" msprop:Generator_RowClassName="returnedRow" msprop:Generator_TableVarName="tablereturned" msprop:Generator_UserTableName="returned">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="id_x0020_studenta" msprop:Generator_ColumnPropNameInRow="id_studenta" msprop:Generator_ColumnPropNameInTable="id_studentaColumn" msprop:Generator_ColumnVarNameInTable="columnid_studenta" msprop:Generator_UserColumnName="id studenta">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Imie_x0020_i_x0020_nazwisko" msprop:Generator_ColumnPropNameInRow="Imie_i_nazwisko" msprop:Generator_ColumnPropNameInTable="Imie_i_nazwiskoColumn" msprop:Generator_ColumnVarNameInTable="columnImie_i_nazwisko" msprop:Generator_UserColumnName="Imie i nazwisko">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Numer_x0020_telefonu" msprop:Generator_ColumnPropNameInRow="Numer_telefonu" msprop:Generator_ColumnPropNameInTable="Numer_telefonuColumn" msprop:Generator_ColumnVarNameInTable="columnNumer_telefonu" msprop:Generator_UserColumnName="Numer telefonu">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Adres_x0020_email" msprop:Generator_ColumnPropNameInRow="Adres_email" msprop:Generator_ColumnPropNameInTable="Adres_emailColumn" msprop:Generator_ColumnVarNameInTable="columnAdres_email" msprop:Generator_UserColumnName="Adres email">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Tytuł_x0020_książki" msprop:Generator_ColumnPropNameInRow="Tytuł_książki" msprop:Generator_ColumnPropNameInTable="Tytuł_książkiColumn" msprop:Generator_ColumnVarNameInTable="columnTytuł_książki" msprop:Generator_UserColumnName="Tytuł książki">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Data_x0020_wypożyczenia" msprop:Generator_ColumnPropNameInRow="Data_wypożyczenia" msprop:Generator_ColumnPropNameInTable="Data_wypożyczeniaColumn" msprop:Generator_ColumnVarNameInTable="columnData_wypożyczenia" msprop:Generator_UserColumnName="Data wypożyczenia">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Data_x0020_oddania" msprop:Generator_ColumnPropNameInRow="Data_oddania" msprop:Generator_ColumnPropNameInTable="Data_oddaniaColumn" msprop:Generator_ColumnVarNameInTable="columnData_oddania" msprop:Generator_UserColumnName="Data oddania" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

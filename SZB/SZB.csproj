@@ -73,12 +73,6 @@
     <Compile Include="AllBooksDetails.Designer.cs">
       <DependentUpon>AllBooksDetails.cs</DependentUpon>
     </Compile>
-    <Compile Include="BookDetail.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="BookDetail.Designer.cs">
-      <DependentUpon>BookDetail.cs</DependentUpon>
-    </Compile>
     <Compile Include="Books.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -140,6 +134,21 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SZBDataSet1.xsd</DependentUpon>
     </Compile>
+    <Compile Include="SZBDataSet10.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SZBDataSet10.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SZBDataSet11.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SZBDataSet11.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SZBDataSet12.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SZBDataSet12.xsd</DependentUpon>
+    </Compile>
     <Compile Include="SZBDataSet2.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -149,6 +158,36 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>SZBDataSet3.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SZBDataSet4.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SZBDataSet4.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SZBDataSet5.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SZBDataSet5.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SZBDataSet6.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SZBDataSet6.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SZBDataSet7.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SZBDataSet7.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SZBDataSet8.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SZBDataSet8.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SZBDataSet9.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SZBDataSet9.xsd</DependentUpon>
     </Compile>
     <Compile Include="SZBDataSetForDisplayIssueBooks.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -171,9 +210,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AllBooksDetails.resx">
       <DependentUpon>AllBooksDetails.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="BookDetail.resx">
-      <DependentUpon>BookDetail.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Books.resx">
       <DependentUpon>Books.cs</DependentUpon>
@@ -235,6 +271,39 @@
     <None Include="SZBDataSet1.xss">
       <DependentUpon>SZBDataSet1.xsd</DependentUpon>
     </None>
+    <None Include="SZBDataSet10.xsc">
+      <DependentUpon>SZBDataSet10.xsd</DependentUpon>
+    </None>
+    <None Include="SZBDataSet10.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SZBDataSet10.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SZBDataSet10.xss">
+      <DependentUpon>SZBDataSet10.xsd</DependentUpon>
+    </None>
+    <None Include="SZBDataSet11.xsc">
+      <DependentUpon>SZBDataSet11.xsd</DependentUpon>
+    </None>
+    <None Include="SZBDataSet11.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SZBDataSet11.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SZBDataSet11.xss">
+      <DependentUpon>SZBDataSet11.xsd</DependentUpon>
+    </None>
+    <None Include="SZBDataSet12.xsc">
+      <DependentUpon>SZBDataSet12.xsd</DependentUpon>
+    </None>
+    <None Include="SZBDataSet12.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SZBDataSet12.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SZBDataSet12.xss">
+      <DependentUpon>SZBDataSet12.xsd</DependentUpon>
+    </None>
     <None Include="SZBDataSet2.xsc">
       <DependentUpon>SZBDataSet2.xsd</DependentUpon>
     </None>
@@ -256,6 +325,72 @@
     </None>
     <None Include="SZBDataSet3.xss">
       <DependentUpon>SZBDataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="SZBDataSet4.xsc">
+      <DependentUpon>SZBDataSet4.xsd</DependentUpon>
+    </None>
+    <None Include="SZBDataSet4.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SZBDataSet4.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SZBDataSet4.xss">
+      <DependentUpon>SZBDataSet4.xsd</DependentUpon>
+    </None>
+    <None Include="SZBDataSet5.xsc">
+      <DependentUpon>SZBDataSet5.xsd</DependentUpon>
+    </None>
+    <None Include="SZBDataSet5.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SZBDataSet5.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SZBDataSet5.xss">
+      <DependentUpon>SZBDataSet5.xsd</DependentUpon>
+    </None>
+    <None Include="SZBDataSet6.xsc">
+      <DependentUpon>SZBDataSet6.xsd</DependentUpon>
+    </None>
+    <None Include="SZBDataSet6.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SZBDataSet6.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SZBDataSet6.xss">
+      <DependentUpon>SZBDataSet6.xsd</DependentUpon>
+    </None>
+    <None Include="SZBDataSet7.xsc">
+      <DependentUpon>SZBDataSet7.xsd</DependentUpon>
+    </None>
+    <None Include="SZBDataSet7.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SZBDataSet7.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SZBDataSet7.xss">
+      <DependentUpon>SZBDataSet7.xsd</DependentUpon>
+    </None>
+    <None Include="SZBDataSet8.xsc">
+      <DependentUpon>SZBDataSet8.xsd</DependentUpon>
+    </None>
+    <None Include="SZBDataSet8.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SZBDataSet8.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SZBDataSet8.xss">
+      <DependentUpon>SZBDataSet8.xsd</DependentUpon>
+    </None>
+    <None Include="SZBDataSet9.xsc">
+      <DependentUpon>SZBDataSet9.xsd</DependentUpon>
+    </None>
+    <None Include="SZBDataSet9.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SZBDataSet9.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SZBDataSet9.xss">
+      <DependentUpon>SZBDataSet9.xsd</DependentUpon>
     </None>
     <None Include="SZBDataSetForDisplayIssueBooks.xsc">
       <DependentUpon>SZBDataSetForDisplayIssueBooks.xsd</DependentUpon>
@@ -309,6 +444,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\visible.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\Icon1.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

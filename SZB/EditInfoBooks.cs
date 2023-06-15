@@ -51,7 +51,7 @@ namespace SZB
                 }
                 else
                 {
-                    MessageBox.Show("No data found for the selected item", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Nie znaleziono danych.", "Informacja", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             else
@@ -65,7 +65,7 @@ namespace SZB
 
         private void deleteBTN (object sender, EventArgs e)
         {
-            if (MessageBox.Show("Dane will be deleted, Confirm?", "Warning", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+            if (MessageBox.Show("Dane zostaną usunięte, Potwierdźić?", "Uwaga!", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
             {
                 SqlConnection con = new SqlConnection(@"Data Source=librarymanagesystem.database.windows.net;Initial Catalog=SZB;User ID=adminXYZ;Password=GorzWlkp!;Connect Timeout=60;Encrypt=True;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
                 SqlCommand cmd = new SqlCommand("DELETE FROM Books WHERE bid=" + rowid + "and accountId = "+ accountId + "", con);
@@ -73,7 +73,7 @@ namespace SZB
                 DataSet ds = new DataSet();
                 da.Fill(ds);
 
-                MessageBox.Show("Please Refresh to see changes", "Success", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Odśwież, aby zobaczyć zmiany.", "Sukces!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -91,7 +91,7 @@ namespace SZB
 
         private void UpdateBTN(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Dane will be updated, Confirm?", "Warning", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+            if (MessageBox.Show("Dane zostaną zaktualizowane, Potwierdzić?", "Uwaga!", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
             {
                  string bname = textBox2.Text;
                 string bauthor = textBox3.Text;
@@ -112,7 +112,7 @@ namespace SZB
                 DataSet ds = new DataSet();
                 da.Fill(ds);
 
-                MessageBox.Show("Please Refresh to see changes", "Success", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Odśwież, aby zobaczyć zmiany.", "Sukces!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -120,7 +120,7 @@ namespace SZB
         {
             if (textBox2.Text == "" || textBox3.Text == "" || textBox4.Text == "" || textBox5.Text == "")
             {
-                MessageBox.Show("Puste pole niedozwolone", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Puste pole niedozwolone.", "Uwaga!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {
@@ -149,7 +149,7 @@ namespace SZB
                 cmd.ExecuteNonQuery();
                 con.Close();
 
-                MessageBox.Show("Dane zapisane", "Sukces", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Dane zapisane.", "Sukces!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 clearFuntion();
             }
         }
@@ -193,9 +193,49 @@ namespace SZB
 
         private void EditInfoBooks_Load(object sender, EventArgs e)
         {
+            // TODO: Ten wiersz kodu wczytuje dane do tabeli 'sZBDataSet5.Books' . Możesz go przenieść lub usunąć.
+            this.booksTableAdapter1.Fill(this.sZBDataSet5.Books);
             // TODO: Ten wiersz kodu wczytuje dane do tabeli 'sZBDataSet2.Books' . Możesz go przenieść lub usunąć.
             this.booksTableAdapter.Fill(this.sZBDataSet2.Books);
             RefreshDataGridView();
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if ((dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null) && (e.ColumnIndex == 0))
+            {
+                string bName = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
+                panel2.Visible = true;
+                SqlConnection con = new SqlConnection(@"Data Source=librarymanagesystem.database.windows.net;Initial Catalog=SZB;User ID=adminXYZ;Password=GorzWlkp!;Connect Timeout=60;Encrypt=True;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+                SqlCommand cmd = new SqlCommand("SELECT * FROM Books WHERE bName = @bName AND accountId = @accountId", con);
+                cmd.Parameters.AddWithValue("@bName", bName);
+                cmd.Parameters.AddWithValue("@accountId", accountId);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataSet ds = new DataSet();
+                da.Fill(ds);
+
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    rowid = Convert.ToInt32(ds.Tables[0].Rows[0][0].ToString());
+                    textBox2.Text = ds.Tables[0].Rows[0][1].ToString();
+                    textBox3.Text = ds.Tables[0].Rows[0][2].ToString();
+                    textBox4.Text = ds.Tables[0].Rows[0][3].ToString();
+                    textBox5.Text = ds.Tables[0].Rows[0][4].ToString();
+                }
+                else
+                {
+                    MessageBox.Show("Nie znaleziono danych.", "Informacja", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Kliknij na tytuł książki, by zmienić lub usunąć dane.", "Informacja", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void dataGridView1_ReadOnlyChanged(object sender, EventArgs e)
+        {
+            dataGridView1.ReadOnly = true;
         }
     }
 }

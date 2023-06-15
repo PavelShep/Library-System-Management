@@ -26,7 +26,7 @@ namespace SZB
         {
             SqlConnection con = new SqlConnection(@"Data Source=librarymanagesystem.database.windows.net;Initial Catalog=SZB;User ID=adminXYZ;Password=GorzWlkp!;Connect Timeout=60;Encrypt=True;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
             con.Open();
-            SqlCommand cmd = new SqlCommand("SELECT * FROM IRBook WHERE st_id = '" + textBox1.Text + "' AND book_return_date IS NULL and accountId =" + accountId, con);
+            SqlCommand cmd = new SqlCommand("SELECT * FROM IRBook WHERE std_name= '" + textBox1.Text + "' AND book_return_date IS NULL and accountId =" + accountId, con);
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             DataSet ds = new DataSet();
             da.Fill(ds);
@@ -37,7 +37,7 @@ namespace SZB
             }
             else
             {
-                MessageBox.Show("Invalid ID");
+                MessageBox.Show("Brak wyników");
             }
             con.Close();
         }
@@ -45,44 +45,98 @@ namespace SZB
 
         string bname;
         string bdate;
-        int rowid;
+        string sname;
+
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+ 
             panel2.Visible = true;
-            if (dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0 && dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
             {
-                rowid = int.Parse(dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString());
-                bname = dataGridView1.Rows[e.RowIndex].Cells[5].Value.ToString();
-                bdate = dataGridView1.Rows[e.RowIndex].Cells[6].Value.ToString();
+                sname = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString(); // Error there  'Input string was not in a correct format' after click the object
+                //bname = dataGridView1.Rows[e.RowIndex].Cells[4].Value.ToString(); // error : 'Index was out of range. Must be non-negative and less than the size of the collection.
+                //bdate = dataGridView1.Rows[e.RowIndex].Cells[5].Value.ToString();
+                if (!string.IsNullOrEmpty(sname))
+                {
+                    bname = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
+                    bdate = dataGridView1.Rows[e.RowIndex].Cells[4].Value.ToString();
+                }
+
+                else
+                {
+                    // Handle the case where a cell is clicked outside the valid range.
+                    // You might want to reset the values or display an error message.
+                    sname = "-1";
+                    bname = "";
+                    bdate = "";
+                }
+            }
+            else
+            {
+                // Handle the case where a cell is clicked outside the valid range.
+                // You might want to reset the values or display an error message.
+                sname = "-1";
+                bname = "";
+                bdate = "";
             }
             textBox3.Text = bname;
             textBox2.Text = bdate;
         }
 
+
+    
+
         private void button2_Click(object sender, EventArgs e)
         {
             using (SqlConnection con = new SqlConnection(@"Data Source=librarymanagesystem.database.windows.net;Initial Catalog=SZB;User ID=adminXYZ;Password=GorzWlkp!;Connect Timeout=60;Encrypt=True;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"))
             {
-                con.Open();
-                using (SqlCommand cmd = new SqlCommand("UPDATE IRBook SET book_return_date = @returnDate WHERE st_id = @stId AND id = @rowId AND accountId = @accountId", con))
+                try
                 {
-                    cmd.Parameters.AddWithValue("@returnDate", dateTimePicker1.Text);
-                    cmd.Parameters.AddWithValue("@stId", textBox1.Text);
-                    cmd.Parameters.AddWithValue("@rowId", rowid);
-                    cmd.Parameters.AddWithValue("@accountId", accountId);
+                    con.Open();
+                    SqlCommand cmd = new SqlCommand("UPDATE IRBook SET book_return_date = @returnDate", con);
+                    cmd.Parameters.AddWithValue("@returnDate", dateTimePicker1.Value);
 
                     int rowsAffected = cmd.ExecuteNonQuery();
                     if (rowsAffected > 0)
                     {
-                        MessageBox.Show("Update successful.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Aktualizowano pomyślnie.", "Sukces!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
                     {
-                        MessageBox.Show("No rows were updated.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show("Żadne dane nie zostały zaktualizowane.", "Uwaga!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                 }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Wystąpił błąd: " + ex.Message, "Błąd!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                finally
+                {
+                    con.Close();
+                }
             }
-            MessageBox.Show("Success");
+
+        }
+
+        private void ReturnBook_Load(object sender, EventArgs e)
+        {
+            // TODO: Ten wiersz kodu wczytuje dane do tabeli 'sZBDataSet4.IRBook' . Możesz go przenieść lub usunąć.
+            //this.iRBookTableAdapter.Fill(this.sZBDataSet4.IRBook);
+            string x = "SELECT * FROM IRBook WHERE accountId = " + @accountId + " and book_return_date is NULL";
+            SqlConnectionTry connectionTry = new SqlConnectionTry();
+            DataSet filteredData = connectionTry.FilterBooksByAccountId(accountId , x);
+            dataGridView1.DataSource = filteredData.Tables[0];
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void dataGridView1_ReadOnlyChanged(object sender, EventArgs e)
+        {
+            dataGridView1.ReadOnly = true;
         }
     }
 }

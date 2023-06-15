@@ -32,8 +32,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditInfoBooks));
             this.refresfBTN = new System.Windows.Forms.Button();
             this.clearButton = new System.Windows.Forms.Button();
             this.UpdateButton = new System.Windows.Forms.Button();
@@ -52,21 +51,26 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.button3 = new System.Windows.Forms.Button();
+            this.booksBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.sZBDataSet2 = new SZB.SZBDataSet2();
+            this.booksTableAdapter = new SZB.SZBDataSet2TableAdapters.BooksTableAdapter();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.booksBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.sZBDataSet5 = new SZB.SZBDataSet5();
+            this.booksTableAdapter1 = new SZB.SZBDataSet5TableAdapters.BooksTableAdapter();
             this.bNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bAuthorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bPublicationDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bQuantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.booksBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.sZBDataSet2 = new SZB.SZBDataSet2();
-            this.booksTableAdapter = new SZB.SZBDataSet2TableAdapters.BooksTableAdapter();
             this.panel4.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.booksBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sZBDataSet2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.booksBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sZBDataSet5)).BeginInit();
             this.SuspendLayout();
             // 
             // refresfBTN
@@ -81,7 +85,7 @@
             this.refresfBTN.Name = "refresfBTN";
             this.refresfBTN.Size = new System.Drawing.Size(133, 34);
             this.refresfBTN.TabIndex = 61;
-            this.refresfBTN.Text = "Refresh";
+            this.refresfBTN.Text = "Odśwież";
             this.refresfBTN.UseVisualStyleBackColor = false;
             this.refresfBTN.Click += new System.EventHandler(this.refreshAllBTN);
             // 
@@ -97,7 +101,7 @@
             this.clearButton.Name = "clearButton";
             this.clearButton.Size = new System.Drawing.Size(133, 34);
             this.clearButton.TabIndex = 60;
-            this.clearButton.Text = "Clear";
+            this.clearButton.Text = "Wyczyść";
             this.clearButton.UseVisualStyleBackColor = false;
             this.clearButton.Click += new System.EventHandler(this.clearBTN);
             // 
@@ -113,7 +117,7 @@
             this.UpdateButton.Name = "UpdateButton";
             this.UpdateButton.Size = new System.Drawing.Size(133, 34);
             this.UpdateButton.TabIndex = 58;
-            this.UpdateButton.Text = "Upload";
+            this.UpdateButton.Text = "Zaktualizuj";
             this.UpdateButton.UseVisualStyleBackColor = false;
             this.UpdateButton.Click += new System.EventHandler(this.UpdateBTN);
             // 
@@ -151,7 +155,7 @@
             this.DeleteButton.Name = "DeleteButton";
             this.DeleteButton.Size = new System.Drawing.Size(133, 34);
             this.DeleteButton.TabIndex = 53;
-            this.DeleteButton.Text = "Delete";
+            this.DeleteButton.Text = "Usuń";
             this.DeleteButton.UseVisualStyleBackColor = false;
             this.DeleteButton.Click += new System.EventHandler(this.deleteBTN);
             // 
@@ -167,7 +171,7 @@
             this.AddButton.Name = "AddButton";
             this.AddButton.Size = new System.Drawing.Size(133, 34);
             this.AddButton.TabIndex = 52;
-            this.AddButton.Text = "Add";
+            this.AddButton.Text = "Dodaj";
             this.AddButton.UseVisualStyleBackColor = false;
             this.AddButton.Click += new System.EventHandler(this.addBTN);
             // 
@@ -176,44 +180,44 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(87, 160);
+            this.label4.Location = new System.Drawing.Point(171, 161);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(128, 21);
+            this.label4.Size = new System.Drawing.Size(47, 21);
             this.label4.TabIndex = 51;
-            this.label4.Text = "Book Quantity";
+            this.label4.Text = "Ilość";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(61, 114);
+            this.label3.Location = new System.Drawing.Point(76, 116);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(150, 21);
+            this.label3.Size = new System.Drawing.Size(137, 21);
             this.label3.TabIndex = 50;
-            this.label3.Text = "Book publication";
+            this.label3.Text = "Data publikacji";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(95, 76);
+            this.label2.Location = new System.Drawing.Point(161, 76);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(119, 21);
+            this.label2.Size = new System.Drawing.Size(56, 21);
             this.label2.TabIndex = 49;
-            this.label2.Text = "Author name";
+            this.label2.Text = "Autor";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(109, 32);
+            this.label5.Location = new System.Drawing.Point(112, 33);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(104, 21);
             this.label5.TabIndex = 48;
-            this.label5.Text = "Book name";
+            this.label5.Text = "Tytuł książki";
             // 
             // panel1
             // 
@@ -297,109 +301,6 @@
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AllowUserToResizeColumns = false;
-            this.dataGridView1.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 8.25F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView1.AutoGenerateColumns = false;
-            this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
-            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 8.25F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridView1.ColumnHeadersHeight = 40;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.bNameDataGridViewTextBoxColumn,
-            this.bAuthorDataGridViewTextBoxColumn,
-            this.bPublicationDataGridViewTextBoxColumn,
-            this.bQuantityDataGridViewTextBoxColumn});
-            this.dataGridView1.DataSource = this.booksBindingSource;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Century Gothic", 8.25F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
-            this.dataGridView1.GridColor = System.Drawing.SystemColors.Control;
-            this.dataGridView1.Location = new System.Drawing.Point(79, 268);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Century Gothic", 8.25F);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Century Gothic", 8.25F);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle5;
-            this.dataGridView1.Size = new System.Drawing.Size(697, 334);
-            this.dataGridView1.TabIndex = 63;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
-            // 
-            // bNameDataGridViewTextBoxColumn
-            // 
-            this.bNameDataGridViewTextBoxColumn.DataPropertyName = "bName";
-            this.bNameDataGridViewTextBoxColumn.HeaderText = "bName";
-            this.bNameDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.bNameDataGridViewTextBoxColumn.Name = "bNameDataGridViewTextBoxColumn";
-            this.bNameDataGridViewTextBoxColumn.ReadOnly = true;
-            this.bNameDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // bAuthorDataGridViewTextBoxColumn
-            // 
-            this.bAuthorDataGridViewTextBoxColumn.DataPropertyName = "bAuthor";
-            this.bAuthorDataGridViewTextBoxColumn.HeaderText = "bAuthor";
-            this.bAuthorDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.bAuthorDataGridViewTextBoxColumn.Name = "bAuthorDataGridViewTextBoxColumn";
-            this.bAuthorDataGridViewTextBoxColumn.ReadOnly = true;
-            this.bAuthorDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // bPublicationDataGridViewTextBoxColumn
-            // 
-            this.bPublicationDataGridViewTextBoxColumn.DataPropertyName = "bPublication";
-            this.bPublicationDataGridViewTextBoxColumn.HeaderText = "bPublication";
-            this.bPublicationDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.bPublicationDataGridViewTextBoxColumn.Name = "bPublicationDataGridViewTextBoxColumn";
-            this.bPublicationDataGridViewTextBoxColumn.ReadOnly = true;
-            this.bPublicationDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // bQuantityDataGridViewTextBoxColumn
-            // 
-            this.bQuantityDataGridViewTextBoxColumn.DataPropertyName = "bQuantity";
-            this.bQuantityDataGridViewTextBoxColumn.HeaderText = "bQuantity";
-            this.bQuantityDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.bQuantityDataGridViewTextBoxColumn.Name = "bQuantityDataGridViewTextBoxColumn";
-            this.bQuantityDataGridViewTextBoxColumn.ReadOnly = true;
-            this.bQuantityDataGridViewTextBoxColumn.Width = 125;
-            // 
             // booksBindingSource
             // 
             this.booksBindingSource.DataMember = "Books";
@@ -413,6 +314,106 @@
             // booksTableAdapter
             // 
             this.booksTableAdapter.ClearBeforeFill = true;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AutoGenerateColumns = false;
+            this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
+            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HotTrack;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.bNameDataGridViewTextBoxColumn,
+            this.bAuthorDataGridViewTextBoxColumn,
+            this.bPublicationDataGridViewTextBoxColumn,
+            this.bQuantityDataGridViewTextBoxColumn});
+            this.dataGridView1.DataSource = this.booksBindingSource1;
+            this.dataGridView1.EnableHeadersVisualStyles = false;
+            this.dataGridView1.GridColor = System.Drawing.Color.Black;
+            this.dataGridView1.Location = new System.Drawing.Point(155, 274);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(108)))), ((int)(((byte)(181)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(108)))), ((int)(((byte)(181)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridView1.RowHeadersWidth = 51;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
+            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            this.dataGridView1.Size = new System.Drawing.Size(601, 313);
+            this.dataGridView1.TabIndex = 63;
+            this.dataGridView1.ReadOnlyChanged += new System.EventHandler(this.dataGridView1_ReadOnlyChanged);
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // booksBindingSource1
+            // 
+            this.booksBindingSource1.DataMember = "Books";
+            this.booksBindingSource1.DataSource = this.sZBDataSet5;
+            // 
+            // sZBDataSet5
+            // 
+            this.sZBDataSet5.DataSetName = "SZBDataSet5";
+            this.sZBDataSet5.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // booksTableAdapter1
+            // 
+            this.booksTableAdapter1.ClearBeforeFill = true;
+            // 
+            // bNameDataGridViewTextBoxColumn
+            // 
+            this.bNameDataGridViewTextBoxColumn.DataPropertyName = "bName";
+            this.bNameDataGridViewTextBoxColumn.HeaderText = "Tytuł książki";
+            this.bNameDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.bNameDataGridViewTextBoxColumn.Name = "bNameDataGridViewTextBoxColumn";
+            this.bNameDataGridViewTextBoxColumn.ReadOnly = true;
+            this.bNameDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // bAuthorDataGridViewTextBoxColumn
+            // 
+            this.bAuthorDataGridViewTextBoxColumn.DataPropertyName = "bAuthor";
+            this.bAuthorDataGridViewTextBoxColumn.HeaderText = "Autor";
+            this.bAuthorDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.bAuthorDataGridViewTextBoxColumn.Name = "bAuthorDataGridViewTextBoxColumn";
+            this.bAuthorDataGridViewTextBoxColumn.ReadOnly = true;
+            this.bAuthorDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // bPublicationDataGridViewTextBoxColumn
+            // 
+            this.bPublicationDataGridViewTextBoxColumn.DataPropertyName = "bPublication";
+            this.bPublicationDataGridViewTextBoxColumn.HeaderText = "Data publikacji";
+            this.bPublicationDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.bPublicationDataGridViewTextBoxColumn.Name = "bPublicationDataGridViewTextBoxColumn";
+            this.bPublicationDataGridViewTextBoxColumn.ReadOnly = true;
+            this.bPublicationDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // bQuantityDataGridViewTextBoxColumn
+            // 
+            this.bQuantityDataGridViewTextBoxColumn.DataPropertyName = "bQuantity";
+            this.bQuantityDataGridViewTextBoxColumn.HeaderText = "jakość";
+            this.bQuantityDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.bQuantityDataGridViewTextBoxColumn.Name = "bQuantityDataGridViewTextBoxColumn";
+            this.bQuantityDataGridViewTextBoxColumn.ReadOnly = true;
+            this.bQuantityDataGridViewTextBoxColumn.Width = 125;
             // 
             // EditInfoBooks
             // 
@@ -435,6 +436,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel5);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "EditInfoBooks";
             this.Text = "EditInfoBooks";
@@ -447,9 +449,11 @@
             this.panel2.PerformLayout();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.booksBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sZBDataSet2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.booksBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sZBDataSet5)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -475,10 +479,13 @@
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.DataGridView dataGridView1;
         private SZBDataSet2 sZBDataSet2;
         private System.Windows.Forms.BindingSource booksBindingSource;
         private SZBDataSet2TableAdapters.BooksTableAdapter booksTableAdapter;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private SZBDataSet5 sZBDataSet5;
+        private System.Windows.Forms.BindingSource booksBindingSource1;
+        private SZBDataSet5TableAdapters.BooksTableAdapter booksTableAdapter1;
         private System.Windows.Forms.DataGridViewTextBoxColumn bNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn bAuthorDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn bPublicationDataGridViewTextBoxColumn;

@@ -38,18 +38,20 @@ namespace SZB
         }
 
         int bid;
-        int rowid = 0;
+        int rowid ;
 
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Data will be updated. Confirm?", "Warning", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+            string sqlCommand;
+            if (MessageBox.Show("Dane zostaną zaktualizowane. Potwierdzić?", "Uwaga", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
             {
                 string stname = textBox2.Text;
                 string stmobilephone = textBox3.Text;
                 string stemail = textBox4.Text;
 
-                string sqlCommand = "UPDATE Students SET stName = @stName, stMobilePhone = @stMobilePhone, stEmail = @stEmail WHERE accountId ="+ @accountId+ " AND stid =" + @rowid;
+                
+                sqlCommand = "UPDATE Students SET stName = @stName, stMobilePhone = @stMobilePhone, stEmail = @stEmail WHERE accountId ="+ @accountId+ " AND stid =" + @rowid;
 
                 using (SqlConnection connection = new SqlConnection(@"Data Source=librarymanagesystem.database.windows.net;Initial Catalog=SZB;User ID=adminXYZ;Password=GorzWlkp!;Connect Timeout=10;Encrypt=True;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"))
                 {
@@ -65,11 +67,11 @@ namespace SZB
                         int rowsAffected = command.ExecuteNonQuery();
                         if (rowsAffected > 0)
                         {
-                            MessageBox.Show("Data updated successfully. Please refresh to see the changes.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show("Dane zaktualizowane pomyślnie. Odśwież, by zobaczyć zmiany.", "Sukces!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                         else
                         {
-                            MessageBox.Show("No rows were updated.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            MessageBox.Show("Żadne wiersze nie zostały zaktualizowane.", "Uwaga!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
                     }
                 }
@@ -95,12 +97,12 @@ namespace SZB
         {
             string sqlCommand = "DELETE FROM Students WHERE stid=" + rowid + "and accountId =" + accountId;
 
-            if (MessageBox.Show("Dane will be deleted, Confirm?", "Warning", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+            if (MessageBox.Show("Dane zostaną usunięte, Potwierdzić?", "Uwaga!", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
             {
                 SqlConnectionTry connectionTry = new SqlConnectionTry();
                 DataSet filteredData = connectionTry.connectionForStudents(sqlCommand, accountId);
 
-                MessageBox.Show("Please Refresh to see changes", "Success", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Odśwież, by zobaczyć zmiany", "Sukces!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -159,66 +161,72 @@ namespace SZB
             RefreshDataGridView(); // Call the RefreshDataGridView method to initially populate the DataGridView
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            
-            SqlConnectionTry tr = new SqlConnectionTry();
-            
 
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
             if ((dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null) && (e.ColumnIndex == 0))
             {
                 bid = int.Parse(dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString());
-                cleaner();
-                string sqlCommand = "SELECT * FROM Students WHERE stid=" + bid + " and accountId =" + accountId;
+
+                //SqlConnection con = new SqlConnection(@"Data Source=librarymanagesystem.database.windows.net;Initial Catalog=SZB;User ID=adminXYZ;Password=GorzWlkp!;Connect Timeout=60;Encrypt=True;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+                //SqlCommand cmd = new SqlCommand("SELECT * FROM Students WHERE stid=" + bid + " and accountId =" + accountId, con);
+                //SqlDataAdapter da = new SqlDataAdapter(cmd);
+                //DataSet ds = new DataSet();
+                //da.Fill(ds);
+
+                //rowid = Convert.ToInt32(ds.Tables[0].Rows[0][0].ToString());
+
+
+                string sqlCommand = "SELECT * FROM Students WHERE stid=" + bid + " and accountId =" + accountId + "";
 
                 SqlConnectionTry connectionTry = new SqlConnectionTry();
                 DataSet filteredData = connectionTry.connectionForStudents(sqlCommand, accountId);
-                dataGridView1.DataSource = filteredData.Tables[0];
+                //dataGridView1.DataSource = filteredData.Tables[0];
 
-                if (filteredData.Tables[0].Rows.Count > 0)
-                {
-                    if (filteredData.Tables[0].Rows[0][0] != DBNull.Value)
-                    {
-                        rowid = Convert.ToInt32(filteredData.Tables[0].Rows[0][0].ToString());
-                    }
-                    else
-                    {
-                        rowid = 0; // Set a default value if the rowid is null
-                    }
 
-                    textBox2.Text = filteredData.Tables[0].Rows[0][1].ToString();
-                    textBox3.Text = filteredData.Tables[0].Rows[0][2].ToString();
-                    textBox4.Text = filteredData.Tables[0].Rows[0][3].ToString();
-                }
-                else
-                {
-                    MessageBox.Show("No data found for the selected item", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
+                rowid = Convert.ToInt32(filteredData.Tables[0].Rows[0][0].ToString());
+
+                textBox2.Text = filteredData.Tables[0].Rows[0][1].ToString();
+                textBox3.Text = filteredData.Tables[0].Rows[0][2].ToString();
+                textBox4.Text = filteredData.Tables[0].Rows[0][3].ToString();
             }
             else
             {
-                MessageBox.Show("Click on the items in the bid column to change or delete the data", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Kliknij komórkę z id studenta, by zmienić lub usunąć dane.", "Informacja", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-
         }
 
-        //private void RefreshDataGridView()
+        //private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         //{
-        //    //SqlConnection con = new SqlConnection(@"Data Source=librarymanagesystem.database.windows.net;Initial Catalog=SZB;User ID=adminXYZ;Password=GorzWlkp!;Connect Timeout=60;Encrypt=True;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
-        //    dataGridView1.DataSource = null; // Clear the current data source
+        //    if ((dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null) && (e.ColumnIndex == 0))
+        //    {
+        //        bid = int.Parse(dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString());
+        //        cleaner();
+        //        string sqlCommand = "SELECT * FROM Students WHERE stid=" + bid + " and accountId =" + accountId + "";
+
+        //        SqlConnectionTry connectionTry = new SqlConnectionTry();
+        //        DataSet filteredData = connectionTry.connectionForStudents(sqlCommand, accountId);
+        //        dataGridView1.DataSource = filteredData.Tables[0];
 
 
-        //    string sqlCommand = "SELECT * FROM Students WHERE stid=" + bid + " and accountId =" + accountId;
+        //        rowid = Convert.ToInt32(filteredData.Tables[0].Rows[0][0].ToString());
 
-        //    SqlConnectionTry connectionTry = new SqlConnectionTry();
-        //    DataSet filteredData = connectionTry.connectionForStudents(sqlCommand, accountId);
 
-        //    dataGridView1.DataSource = filteredData.Tables[0]; // Reassign the updated data source
-        //    dataGridView1.Refresh(); // Refresh the DataGridView display
+        //        textBox2.Text = filteredData.Tables[0].Rows[0][1].ToString();
+        //        textBox3.Text = filteredData.Tables[0].Rows[0][2].ToString();
+        //        textBox4.Text = filteredData.Tables[0].Rows[0][3].ToString();
+        //    }
+        //    else
+        //    {
+        //        MessageBox.Show("Click on the items in the bid column to change or delete the data", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //    }
+
         //}
+
         private void dataGridView1_ReadOnlyChanged(object sender, EventArgs e)
         {
             dataGridView1.ReadOnly = true;
         }
+
     }
 }
