@@ -1,3 +1,6 @@
+# Uwaga! Baza danych jest wyłączona
+Ponieważ subskrypcja Azure dla Studentów wygasła 30.06.2023
+
 # System zarządzania bazą danych
 
 ## Opis projektu
