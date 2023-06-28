@@ -1,5 +1,5 @@
 # Uwaga! Baza danych jest wyłączona
-Ponieważ subskrypcja Azure dla Studentów wygasła 30.06.2023
+Ponieważ subskrypcja Azure dla Studentów wygasła
 
 # System zarządzania bazą danych
 
