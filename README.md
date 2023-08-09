@@ -1,7 +1,9 @@
 # Uwaga! Baza danych jest wyłączona
 Ponieważ subskrypcja Azure dla Studentów wygasła
 
-# System zarządzania bazą danych
+## System zarządzania bazą danych
+
+![Library_system_management](https://raw.githubusercontent.com/PavelShep/PavelShep/main/uploads/library_system_management.png)
 
 ## Opis projektu
 
